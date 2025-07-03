@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les18 - Fill-in-the-blank Exercise (Version 2)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les18 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 6th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 18 **Komt u over <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> weekje maar terug**
+
+Aan de <input type="text" size="8" class="fill-blank" data-answer="basis" data-original="basis" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van de medische zorg staat <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> huisarts. Een pijnlijke rug, een <input type="text" size="9" class="fill-blank" data-answer="ontstoken" data-original="ontstoken" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> keel, maagproblemen? Naar de huisarts. <input type="text" size="8" class="fill-blank" data-answer="een" data-original="Een" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> recept voor de pil of <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> griepprik? Krijg je van de <input type="text" size="8" class="fill-blank" data-answer="dokter" data-original="dokter" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Naar de fysiotherapeut, huidarts of <input type="text" size="14" class="fill-blank" data-answer="hartspecialist" data-original="hartspecialist" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Haal een verwijzing bij je <input type="text" size="8" class="fill-blank" data-answer="huisarts" data-original="huisarts" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Waarom kunnen we niet direct <input type="text" size="8" class="fill-blank" data-answer="naar" data-original="naar" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de specialist? De huisarts kent <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> persoonlijk, hij kan beoordelen welke <input type="text" size="8" class="fill-blank" data-answer="medische" data-original="medische" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zorg je nodig hebt. Bovendien <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het niet zeker dat je <input type="text" size="11" class="fill-blank" data-answer="verzekering" data-original="verzekering" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> betaalt, als je zonder verwijzing <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de huisarts naar een specialist <input type="text" size="8" class="fill-blank" data-answer="stapt" data-original="stapt" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. En tussen twee haakjes: een <input type="text" size="8" class="fill-blank" data-answer="gesprek" data-original="gesprek" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met een huisarts kost minder <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een onderzoek in het ziekenhuis! <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="Maar" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voor problemen met je tanden <input type="text" size="8" class="fill-blank" data-answer="ga" data-original="ga" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je wel direct naar de <input type="text" size="8" class="fill-blank" data-answer="tandarts" data-original="tandarts" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Huisartsen werken tegenwoordig vaak in **<input type="text" size="8" class="fill-blank" data-answer="deeltijd" data-original="deeltijd" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**. Voor velen, vooral vrouwen, is <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> combinatie van praktijk en zorg <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de kinderen alleen mogelijk met <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> deeltijdbaan. Maar los daarvan wordt <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> beroep steeds zwaarder. De bevolking <input type="text" size="9" class="fill-blank" data-answer="vergrijst" data-original="vergrijst" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, en **hoe ouder de mensen <input type="text" size="8" class="fill-blank" data-answer="worden" data-original="worden" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, des te vaker hebben ze <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dokter nodig**. Bovendien worden er <input type="text" size="8" class="fill-blank" data-answer="steeds" data-original="steeds" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nieuwe methoden van onderzoek en <input type="text" size="11" class="fill-blank" data-answer="behandeling" data-original="behandeling" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ontwikkeld, en daardoor krijgen de <input type="text" size="10" class="fill-blank" data-answer="huisartsen" data-original="huisartsen" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> er allerlei taken bij. Zij <input type="text" size="8" class="fill-blank" data-answer="krijgen" data-original="krijgen" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het steeds drukker. Als het <input type="text" size="8" class="fill-blank" data-answer="hun" data-original="hun" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te veel wordt, kiezen ze <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> werken in deeltijd.
+Maar **veronderstel** <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je ziek wordt op een <input type="text" size="8" class="fill-blank" data-answer="dag" data-original="dag" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> waarop de dokter niet werkt, <input type="text" size="8" class="fill-blank" data-answer="wat" data-original="wat" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dan? Geen probleem, huisartsen werken <input type="text" size="12" class="fill-blank" data-answer="tegenwoordig" data-original="tegenwoordig" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vaak in een groepspraktijk, samen <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een of meer collega's. <input type="text" size="8" class="fill-blank" data-answer="als" data-original="Als" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je opbelt weet je dus <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> altijd wie je treft, maar <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kent hem of haar meestal <input type="text" size="8" class="fill-blank" data-answer="wel" data-original="wel" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Maar 's avonds en in <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> weekend kun je er niet <input type="text" size="8" class="fill-blank" data-answer="terecht" data-original="terecht" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Dan moet je een huisartsenpost <input type="text" size="8" class="fill-blank" data-answer="bellen" data-original="bellen" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Een assistente zegt dat je <input type="text" size="8" class="fill-blank" data-answer="langs" data-original="langs" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> moet komen, of zorgt dat <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wordt teruggebeld. Zo'n post <input type="text" size="8" class="fill-blank" data-answer="zit" data-original="zit" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> meestal in een ziekenhuis. En <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> noodgevallen? Dan ga je naar <input type="text" size="12" class="fill-blank" data-answer="spoedeisende" data-original="Spoedeisende" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Hulp, in datzelfde ziekenhuis. Eventueel <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een ambulance. Je kent het <input type="text" size="14" class="fill-blank" data-answer="telefoonnummer" data-original="telefoonnummer" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voor noodgevallen 112 toch wel?
+<input type="text" size="8" class="fill-blank" data-answer="het" data-original="Het" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is bekend dat Nederlandse huisartsen <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> graag zware medicijnen voorschrijven. "Wacht <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het even af, en komt <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> over een weekje terug", zeggen <input type="text" size="8" class="fill-blank" data-answer="ze" data-original="ze" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dan. "Maar ik ben verkouden, <input type="text" size="8" class="fill-blank" data-answer="en" data-original="en" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik heb een belangrijke vergadering! <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="Ik" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wil een recept voor antibiotica!" <input type="text" size="8" class="fill-blank" data-answer="dring" data-original="dring" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je aan. Het helpt niet. <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> meeste ziektes gaan vanzelf over, <input type="text" size="8" class="fill-blank" data-answer="en" data-original="en" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> antibiotica moet je niet te <input type="text" size="8" class="fill-blank" data-answer="vaak" data-original="vaak" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gebruiken, is hun idee. Hebben <input type="text" size="8" class="fill-blank" data-answer="ze" data-original="ze" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gelijk, of zijn het slechte <input type="text" size="8" class="fill-blank" data-answer="dokters" data-original="dokters" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />?
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

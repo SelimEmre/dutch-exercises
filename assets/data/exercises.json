@@ -1,0 +1,189 @@
+{
+  "metadata": {
+    "totalExercises": 15,
+    "generatedAt": "2024-01-01T00:00:00.000Z",
+    "version": "1.0.0"
+  },
+  "exercises": [
+    {
+      "id": "les12_exercise_every_5th",
+      "filename": "les12_exercise_every_5th.html",
+      "title": "Les 12 Nederland waterland",
+      "description": "Nederland is een waterland. Dat weet iedereen. Maar waarom eigenlijk? Het antwoord is simpel: omdat het zo laag ligt. Een kwart van het land ligt onder de zeespiegel...",
+      "lessonNumber": 12,
+      "difficulty": "easy",
+      "difficultyLevel": 1,
+      "exerciseType": "Every 5th Word",
+      "blankCount": 25,
+      "url": "legacy/les12_exercise_every_5th.html"
+    },
+    {
+      "id": "les12_exercise_every_6th",
+      "filename": "les12_exercise_every_6th.html",
+      "title": "Les 12 Nederland waterland",
+      "description": "Nederland is een waterland. Dat weet iedereen. Maar waarom eigenlijk? Het antwoord is simpel: omdat het zo laag ligt. Een kwart van het land ligt onder de zeespiegel...",
+      "lessonNumber": 12,
+      "difficulty": "medium",
+      "difficultyLevel": 2,
+      "exerciseType": "Every 6th Word",
+      "blankCount": 20,
+      "url": "legacy/les12_exercise_every_6th.html"
+    },
+    {
+      "id": "les12_exercise_every_7th",
+      "filename": "les12_exercise_every_7th.html",
+      "title": "Les 12 Nederland waterland",
+      "description": "Nederland is een waterland. Dat weet iedereen. Maar waarom eigenlijk? Het antwoord is simpel: omdat het zo laag ligt. Een kwart van het land ligt onder de zeespiegel...",
+      "lessonNumber": 12,
+      "difficulty": "hard",
+      "difficultyLevel": 3,
+      "exerciseType": "Every 7th Word",
+      "blankCount": 18,
+      "url": "legacy/les12_exercise_every_7th.html"
+    },
+    {
+      "id": "les13_exercise_every_5th",
+      "filename": "les13_exercise_every_5th.html",
+      "title": "Les 13 Zeg maar Piet",
+      "description": "In Nederland zeggen mensen vaak 'Zeg maar Piet' als ze hun naam noemen. Dit is een informele manier om jezelf voor te stellen...",
+      "lessonNumber": 13,
+      "difficulty": "easy",
+      "difficultyLevel": 1,
+      "exerciseType": "Every 5th Word",
+      "blankCount": 22,
+      "url": "legacy/les13_exercise_every_5th.html"
+    },
+    {
+      "id": "les13_exercise_every_6th",
+      "filename": "les13_exercise_every_6th.html",
+      "title": "Les 13 Zeg maar Piet",
+      "description": "In Nederland zeggen mensen vaak 'Zeg maar Piet' als ze hun naam noemen. Dit is een informele manier om jezelf voor te stellen...",
+      "lessonNumber": 13,
+      "difficulty": "medium",
+      "difficultyLevel": 2,
+      "exerciseType": "Every 6th Word",
+      "blankCount": 18,
+      "url": "legacy/les13_exercise_every_6th.html"
+    },
+    {
+      "id": "les13_exercise_every_7th",
+      "filename": "les13_exercise_every_7th.html",
+      "title": "Les 13 Zeg maar Piet",
+      "description": "In Nederland zeggen mensen vaak 'Zeg maar Piet' als ze hun naam noemen. Dit is een informele manier om jezelf voor te stellen...",
+      "lessonNumber": 13,
+      "difficulty": "hard",
+      "difficultyLevel": 3,
+      "exerciseType": "Every 7th Word",
+      "blankCount": 15,
+      "url": "legacy/les13_exercise_every_7th.html"
+    },
+    {
+      "id": "les20_exercise_every_5th",
+      "filename": "les20_exercise_every_5th.html",
+      "title": "Les 20 Bustocht door Den Haag",
+      "description": "Hier links ziet u de mooiste laan van Den Haag. Dat vind ik tenminste: breed, oude bomen, deftige huizen, typisch Haags...",
+      "lessonNumber": 20,
+      "difficulty": "easy",
+      "difficultyLevel": 1,
+      "exerciseType": "Every 5th Word",
+      "blankCount": 28,
+      "url": "legacy/les20_exercise_every_5th.html"
+    },
+    {
+      "id": "les20_exercise_every_6th",
+      "filename": "les20_exercise_every_6th.html",
+      "title": "Les 20 Bustocht door Den Haag",
+      "description": "Hier links ziet u de mooiste laan van Den Haag. Dat vind ik tenminste: breed, oude bomen, deftige huizen, typisch Haags...",
+      "lessonNumber": 20,
+      "difficulty": "medium",
+      "difficultyLevel": 2,
+      "exerciseType": "Every 6th Word",
+      "blankCount": 24,
+      "url": "legacy/les20_exercise_every_6th.html"
+    },
+    {
+      "id": "les20_exercise_every_7th",
+      "filename": "les20_exercise_every_7th.html",
+      "title": "Les 20 Bustocht door Den Haag",
+      "description": "Hier links ziet u de mooiste laan van Den Haag. Dat vind ik tenminste: breed, oude bomen, deftige huizen, typisch Haags...",
+      "lessonNumber": 20,
+      "difficulty": "hard",
+      "difficultyLevel": 3,
+      "exerciseType": "Every 7th Word",
+      "blankCount": 20,
+      "url": "legacy/les20_exercise_every_7th.html"
+    },
+    {
+      "id": "les22_exercise_every_5th",
+      "filename": "les22_exercise_every_5th.html",
+      "title": "Les 22 De Verenigde Staten van Europa?",
+      "description": "Zal er ooit sprake zijn van de Verenigde Staten van Europa, op gelijke voet met de Verenigde Staten van Amerika? De geschiedenis van de VS verschilt wezenlijk...",
+      "lessonNumber": 22,
+      "difficulty": "easy",
+      "difficultyLevel": 1,
+      "exerciseType": "Every 5th Word",
+      "blankCount": 30,
+      "url": "legacy/les22_exercise_every_5th.html"
+    },
+    {
+      "id": "les22_exercise_every_6th",
+      "filename": "les22_exercise_every_6th.html",
+      "title": "Les 22 De Verenigde Staten van Europa?",
+      "description": "Zal er ooit sprake zijn van de Verenigde Staten van Europa, op gelijke voet met de Verenigde Staten van Amerika? De geschiedenis van de VS verschilt wezenlijk...",
+      "lessonNumber": 22,
+      "difficulty": "medium",
+      "difficultyLevel": 2,
+      "exerciseType": "Every 6th Word",
+      "blankCount": 25,
+      "url": "legacy/les22_exercise_every_6th.html"
+    },
+    {
+      "id": "les22_exercise_every_7th",
+      "filename": "les22_exercise_every_7th.html",
+      "title": "Les 22 De Verenigde Staten van Europa?",
+      "description": "Zal er ooit sprake zijn van de Verenigde Staten van Europa, op gelijke voet met de Verenigde Staten van Amerika? De geschiedenis van de VS verschilt wezenlijk...",
+      "lessonNumber": 22,
+      "difficulty": "hard",
+      "difficultyLevel": 3,
+      "exerciseType": "Every 7th Word",
+      "blankCount": 22,
+      "url": "legacy/les22_exercise_every_7th.html"
+    },
+    {
+      "id": "les41_exercise_every_5th",
+      "filename": "les41_exercise_every_5th.html",
+      "title": "Les 41 Fietsen: goed voor u!",
+      "description": "Nederland telt meer fietsen dan mensen. Waarom zijn er zoveel? Daar zijn al heel veel redenen voor gegeven. Fietsen is gezond, milieuvriendelijk en goedkoop...",
+      "lessonNumber": 41,
+      "difficulty": "easy",
+      "difficultyLevel": 1,
+      "exerciseType": "Every 5th Word",
+      "blankCount": 35,
+      "url": "legacy/les41_exercise_every_5th.html"
+    },
+    {
+      "id": "les41_exercise_every_6th",
+      "filename": "les41_exercise_every_6th.html",
+      "title": "Les 41 Fietsen: goed voor u!",
+      "description": "Nederland telt meer fietsen dan mensen. Waarom zijn er zoveel? Daar zijn al heel veel redenen voor gegeven. Fietsen is gezond, milieuvriendelijk en goedkoop...",
+      "lessonNumber": 41,
+      "difficulty": "medium",
+      "difficultyLevel": 2,
+      "exerciseType": "Every 6th Word",
+      "blankCount": 28,
+      "url": "legacy/les41_exercise_every_6th.html"
+    },
+    {
+      "id": "les41_exercise_every_7th",
+      "filename": "les41_exercise_every_7th.html",
+      "title": "Les 41 Fietsen: goed voor u!",
+      "description": "Nederland telt meer fietsen dan mensen. Waarom zijn er zoveel? Daar zijn al heel veel redenen voor gegeven. Fietsen is gezond, milieuvriendelijk en goedkoop...",
+      "lessonNumber": 41,
+      "difficulty": "hard",
+      "difficultyLevel": 3,
+      "exerciseType": "Every 7th Word",
+      "blankCount": 24,
+      "url": "legacy/les41_exercise_every_7th.html"
+    }
+  ]
+}

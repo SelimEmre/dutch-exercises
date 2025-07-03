@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill-in-the-Blank Exercises - Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .test-pass {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .test-fail {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fill-in-the-Blank Exercises - Test Suite</h1>
+    
+    <div class="test-section">
+        <h2>Utility Functions Tests</h2>
+        <button onclick="testUtilityFunctions()">Run Utility Tests</button>
+        <div id="utilityResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Data Loading Tests</h2>
+        <button onclick="testDataLoading()">Run Data Tests</button>
+        <div id="dataResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Search and Filter Tests</h2>
+        <button onclick="testSearchAndFilter()">Run Search Tests</button>
+        <div id="searchResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Accessibility Tests</h2>
+        <button onclick="testAccessibility()">Run Accessibility Tests</button>
+        <div id="accessibilityResults"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Run All Tests</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <div id="allResults"></div>
+    </div>
+
+    <!-- Load the application scripts -->
+    <script src="../assets/js/utils.js"></script>
+    <script src="../assets/js/data.js"></script>
+    
+    <script>
+        // Test utility functions
+        function testUtilityFunctions() {
+            const results = document.getElementById('utilityResults');
+            results.innerHTML = '';
+            
+            const tests = [
+                {
+                    name: 'normalizeText function',
+                    test: () => {
+                        const result = normalizeText('Café');
+                        return result === 'cafe';
+                    }
+                },
+                {
+                    name: 'calculateScore function',
+                    test: () => {
+                        const result = calculateScore(8, 10);
+                        return result === 80;
+                    }
+                },
+                {
+                    name: 'getDifficulty function',
+                    test: () => {
+                        const easy = getDifficulty('les12_exercise_every_5th.html');
+                        const medium = getDifficulty('les12_exercise_every_6th.html');
+                        const hard = getDifficulty('les12_exercise_every_7th.html');
+                        return easy === 'easy' && medium === 'medium' && hard === 'hard';
+                    }
+                },
+                {
+                    name: 'formatLessonNumber function',
+                    test: () => {
+                        const result = formatLessonNumber('les12_exercise_every_5th.html');
+                        return result === 'Lesson 12';
+                    }
+                },
+                {
+                    name: 'getLessonNumber function',
+                    test: () => {
+                        const result = getLessonNumber('les42_exercise_every_7th.html');
+                        return result === 42;
+                    }
+                }
+            ];
+            
+            runTests(tests, results);
+        }
+        
+        // Test data loading
+        async function testDataLoading() {
+            const results = document.getElementById('dataResults');
+            results.innerHTML = '<div class="test-info">Running data loading tests...</div>';
+            
+            try {
+                const exercises = await loadAllExercises();
+                
+                const tests = [
+                    {
+                        name: 'Load exercises successfully',
+                        test: () => Array.isArray(exercises) && exercises.length > 0
+                    },
+                    {
+                        name: 'Exercise objects have required properties',
+                        test: () => {
+                            if (exercises.length === 0) return false;
+                            const exercise = exercises[0];
+                            return exercise.id && exercise.title && exercise.difficulty && exercise.lessonNumber;
+                        }
+                    },
+                    {
+                        name: 'Exercises are sorted correctly',
+                        test: () => {
+                            if (exercises.length < 2) return true;
+                            for (let i = 1; i < exercises.length; i++) {
+                                const prev = exercises[i-1];
+                                const curr = exercises[i];
+                                if (prev.lessonNumber > curr.lessonNumber) return false;
+                                if (prev.lessonNumber === curr.lessonNumber && prev.difficultyLevel > curr.difficultyLevel) return false;
+                            }
+                            return true;
+                        }
+                    }
+                ];
+                
+                runTests(tests, results);
+            } catch (error) {
+                results.innerHTML = `<div class="test-fail">Error loading data: ${error.message}</div>`;
+            }
+        }
+        
+        // Test search and filter functionality
+        async function testSearchAndFilter() {
+            const results = document.getElementById('searchResults');
+            results.innerHTML = '<div class="test-info">Running search and filter tests...</div>';
+            
+            try {
+                const allExercises = await loadAllExercises();
+                
+                const tests = [
+                    {
+                        name: 'Search by title works',
+                        test: async () => {
+                            const filtered = await getExercises({ search: 'Nederland' });
+                            return filtered.length > 0 && filtered.every(ex => 
+                                ex.title.toLowerCase().includes('nederland') || 
+                                ex.description.toLowerCase().includes('nederland')
+                            );
+                        }
+                    },
+                    {
+                        name: 'Filter by difficulty works',
+                        test: async () => {
+                            const filtered = await getExercises({ difficulty: 'easy' });
+                            return filtered.length > 0 && filtered.every(ex => ex.difficulty === 'easy');
+                        }
+                    },
+                    {
+                        name: 'Sort by lesson works',
+                        test: async () => {
+                            const sorted = await getExercises({ sortBy: 'lesson' });
+                            if (sorted.length < 2) return true;
+                            for (let i = 1; i < sorted.length; i++) {
+                                if (sorted[i-1].lessonNumber > sorted[i].lessonNumber) return false;
+                            }
+                            return true;
+                        }
+                    },
+                    {
+                        name: 'Combined filters work',
+                        test: async () => {
+                            const filtered = await getExercises({ difficulty: 'medium', sortBy: 'title' });
+                            return filtered.every(ex => ex.difficulty === 'medium');
+                        }
+                    }
+                ];
+                
+                await runAsyncTests(tests, results);
+            } catch (error) {
+                results.innerHTML = `<div class="test-fail">Error in search tests: ${error.message}</div>`;
+            }
+        }
+        
+        // Test accessibility features
+        function testAccessibility() {
+            const results = document.getElementById('accessibilityResults');
+            results.innerHTML = '';
+            
+            const tests = [
+                {
+                    name: 'Page has proper heading structure',
+                    test: () => {
+                        const h1 = document.querySelector('h1');
+                        return h1 !== null;
+                    }
+                },
+                {
+                    name: 'Images have alt text or aria-hidden',
+                    test: () => {
+                        const images = document.querySelectorAll('img');
+                        return Array.from(images).every(img => 
+                            img.alt !== undefined || img.getAttribute('aria-hidden') === 'true'
+                        );
+                    }
+                },
+                {
+                    name: 'Form elements have labels',
+                    test: () => {
+                        const inputs = document.querySelectorAll('input, select');
+                        return Array.from(inputs).every(input => {
+                            const id = input.id;
+                            const label = document.querySelector(`label[for="${id}"]`);
+                            const ariaLabel = input.getAttribute('aria-label');
+                            return label !== null || ariaLabel !== null;
+                        });
+                    }
+                },
+                {
+                    name: 'Buttons have accessible names',
+                    test: () => {
+                        const buttons = document.querySelectorAll('button');
+                        return Array.from(buttons).every(button => 
+                            button.textContent.trim() !== '' || 
+                            button.getAttribute('aria-label') !== null
+                        );
+                    }
+                }
+            ];
+            
+            runTests(tests, results);
+        }
+        
+        // Helper function to run tests
+        function runTests(tests, resultsContainer) {
+            let passed = 0;
+            let total = tests.length;
+            
+            tests.forEach(test => {
+                try {
+                    const result = test.test();
+                    const div = document.createElement('div');
+                    div.className = result ? 'test-pass' : 'test-fail';
+                    div.textContent = `${result ? '✓' : '✗'} ${test.name}`;
+                    resultsContainer.appendChild(div);
+                    if (result) passed++;
+                } catch (error) {
+                    const div = document.createElement('div');
+                    div.className = 'test-fail';
+                    div.textContent = `✗ ${test.name} - Error: ${error.message}`;
+                    resultsContainer.appendChild(div);
+                }
+            });
+            
+            const summary = document.createElement('div');
+            summary.className = passed === total ? 'test-pass' : 'test-info';
+            summary.textContent = `Summary: ${passed}/${total} tests passed`;
+            resultsContainer.appendChild(summary);
+        }
+        
+        // Helper function to run async tests
+        async function runAsyncTests(tests, resultsContainer) {
+            let passed = 0;
+            let total = tests.length;
+            
+            for (const test of tests) {
+                try {
+                    const result = await test.test();
+                    const div = document.createElement('div');
+                    div.className = result ? 'test-pass' : 'test-fail';
+                    div.textContent = `${result ? '✓' : '✗'} ${test.name}`;
+                    resultsContainer.appendChild(div);
+                    if (result) passed++;
+                } catch (error) {
+                    const div = document.createElement('div');
+                    div.className = 'test-fail';
+                    div.textContent = `✗ ${test.name} - Error: ${error.message}`;
+                    resultsContainer.appendChild(div);
+                }
+            }
+            
+            const summary = document.createElement('div');
+            summary.className = passed === total ? 'test-pass' : 'test-info';
+            summary.textContent = `Summary: ${passed}/${total} tests passed`;
+            resultsContainer.appendChild(summary);
+        }
+        
+        // Run all tests
+        async function runAllTests() {
+            const results = document.getElementById('allResults');
+            results.innerHTML = '<div class="test-info">Running all tests...</div>';
+            
+            testUtilityFunctions();
+            await testDataLoading();
+            await testSearchAndFilter();
+            testAccessibility();
+            
+            results.innerHTML = '<div class="test-pass">All test suites completed! Check individual sections for results.</div>';
+        }
+    </script>
+</body>
+</html>

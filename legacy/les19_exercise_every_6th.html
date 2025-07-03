@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les19 - Fill-in-the-blank Exercise (Version 2)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les19 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 6th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 19 **Beter laat dan <input type="text" size="8" class="fill-blank" data-answer="nooit" data-original="nooit" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**
+
+Wat leuk! Jullie gaan trouwen! <input type="text" size="8" class="fill-blank" data-answer="beter" data-original="Beter" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> laat dan nooit dacht je <input type="text" size="8" class="fill-blank" data-answer="zeker" data-original="zeker" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, na vier jaar samenwonen?
+Je <input type="text" size="8" class="fill-blank" data-answer="kunt" data-original="kunt" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> toch van gedachten veranderen?! Nu <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in verwachting ben, sta ik <input type="text" size="8" class="fill-blank" data-answer="anders" data-original="anders" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tegenover het huwelijk. Als je <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kind krijgt zonder getrouwd te <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, moet je van alles en <input type="text" size="8" class="fill-blank" data-answer="nog" data-original="nog" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wat regelen. Zo zou Bram <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> **verklaring** moeten tekenen dat hij <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kind erkent. Als je getrouwd <input type="text" size="8" class="fill-blank" data-answer="bent" data-original="bent" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, gaat dat **automatisch**.
+Dus binnenkort <input type="text" size="8" class="fill-blank" data-answer="heet" data-original="heet" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je anders? Dat wordt wennen.
+<input type="text" size="8" class="fill-blank" data-answer="wees" data-original="Wees" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> maar niet bang, ik hou <input type="text" size="8" class="fill-blank" data-answer="mijn" data-original="mijn" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> eigen achternaam. Veel te verwarrend, <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="zo" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />'n naamsverandering opeens. Ook de <input type="text" size="10" class="fill-blank" data-answer="achternaam" data-original="achternaam" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van ons kind kunnen we <input type="text" size="8" class="fill-blank" data-answer="zelf" data-original="zelf" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bepalen, voor zover ik weet.
+<input type="text" size="8" class="fill-blank" data-answer="als" data-original="Als" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik jou was, zou ik <input type="text" size="8" class="fill-blank" data-answer="die" data-original="die" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van Bram maar nemen, de **<input type="text" size="8" class="fill-blank" data-answer="jouwe" data-original="jouwe" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />** is zo lang! Heb je <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aankondigingen al verstuurd?
+Die zijn <input type="text" size="8" class="fill-blank" data-answer="net" data-original="net" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de deur uit. Wel honderd! <input type="text" size="8" class="fill-blank" data-answer="het" data-original="Het" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wordt een echte **bruiloft**, met <input type="text" size="8" class="fill-blank" data-answer="alles" data-original="alles" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> erop en eraan. Bram z'<input type="text" size="8" class="fill-blank" data-answer="n" data-original="n" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> idee! Eerst naar het stadhuis, <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met het hele **gezelschap** naar <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kerk, waar de vader de <input type="text" size="8" class="fill-blank" data-answer="bruid" data-original="bruid" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 'weggeeft', zoals dat heet. Dan <input type="text" size="8" class="fill-blank" data-answer="receptie" data-original="receptie" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, diner, en tot slot: een <input type="text" size="8" class="fill-blank" data-answer="vrolijk" data-original="vrolijk" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> feest! De gasten verrassen ons <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zelfgemaakte liedjes en grappige gedichten. <input type="text" size="8" class="fill-blank" data-answer="er" data-original="Er" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is muziek, dus wie wil, <input type="text" size="8" class="fill-blank" data-answer="kan" data-original="kan" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dansen. En op een gegeven <input type="text" size="8" class="fill-blank" data-answer="moment" data-original="moment" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vertrekken wij met onbekende bestemming <input type="text" size="8" class="fill-blank" data-answer="op" data-original="op" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> **huwelijksreis**!
+Gaat Bram nog het <input type="text" size="8" class="fill-blank" data-answer="afscheid" data-original="afscheid" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van zijn bestaan als vrijgezel <input type="text" size="8" class="fill-blank" data-answer="vieren" data-original="vieren" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Dat is toch de gewoonte? <input type="text" size="8" class="fill-blank" data-answer="brams" data-original="Brams" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> moeder zal wel in de <input type="text" size="8" class="fill-blank" data-answer="wolken" data-original="wolken" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zijn. Ze informeerde immers steeds <input type="text" size="8" class="fill-blank" data-answer="naar" data-original="naar" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> jullie plannen?
+Ze sprong een **<input type="text" size="8" class="fill-blank" data-answer="gat" data-original="gat" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in de lucht**. Ze belt <input type="text" size="8" class="fill-blank" data-answer="elke" data-original="elke" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dag, of we hier wel <input type="text" size="8" class="fill-blank" data-answer="aan" data-original="aan" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gedacht hebben, of we dat <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vergeten ...
+En wie past er <input type="text" size="8" class="fill-blank" data-answer="straks" data-original="straks" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op de baby? Hebben jullie <input type="text" size="8" class="fill-blank" data-answer="al" data-original="al" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een plaatsje veroverd in de **<input type="text" size="8" class="fill-blank" data-answer="crèche" data-original="crèche" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**? Dat zou Bram regelen. Hij <input type="text" size="8" class="fill-blank" data-answer="gaat" data-original="gaat" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een dag minder werken. Met <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> werk kan dat makkelijker dan <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het mijne. En ik verdien <input type="text" size="8" class="fill-blank" data-answer="meer" data-original="meer" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Dus jullie draaien de **rollen <input type="text" size="8" class="fill-blank" data-answer="om" data-original="om" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**? Bram krijgt de moederrol? Modern <input type="text" size="8" class="fill-blank" data-answer="hoor" data-original="hoor" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />!
+Nou ... modern. Ik hoorde Bram <input type="text" size="8" class="fill-blank" data-answer="laatst" data-original="laatst" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aan z'n moeder vragen <input type="text" size="8" class="fill-blank" data-answer="of" data-original="of" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zij niet een dag minder <input type="text" size="8" class="fill-blank" data-answer="kon" data-original="kon" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gaan werken. Daar moest ik <input type="text" size="8" class="fill-blank" data-answer="wel" data-original="wel" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> even om **glimlachen**. "Je wilt <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zoon toch wel een handje <input type="text" size="8" class="fill-blank" data-answer="helpen" data-original="helpen" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met de verzorging van je **<input type="text" size="9" class="fill-blank" data-answer="kleinkind" data-original="kleinkind" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**?" zei hij. "**Vaders zijn daar <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zo handig in!**"
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

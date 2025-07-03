@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Exercise Loading</title>
+</head>
+<body>
+    <h1>Debug Exercise Loading</h1>
+    <div id="output"></div>
+    <div id="error" style="color: red;"></div>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script>
+        const output = document.getElementById('output');
+        const errorDiv = document.getElementById('error');
+
+        function log(message) {
+            console.log(message);
+            output.innerHTML += '<p>' + message + '</p>';
+        }
+
+        function logError(message) {
+            console.error(message);
+            errorDiv.innerHTML += '<p>' + message + '</p>';
+        }
+
+        // Test parsing a single exercise
+        async function testSingleExerciseParsing() {
+            try {
+                log('Testing single exercise parsing...');
+                const filename = 'les12_exercise_every_5th.html';
+                const response = await fetch(`legacy/${filename}`);
+                const htmlContent = await response.text();
+
+                log('HTML content length: ' + htmlContent.length);
+
+                // Test parsing
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlContent, 'text/html');
+
+                const title = doc.querySelector('title')?.textContent || 'No title';
+                log('Title: ' + title);
+
+                const exerciseContent = doc.querySelector('.exercise-content');
+                if (exerciseContent) {
+                    const blankCount = exerciseContent.querySelectorAll('.fill-blank').length;
+                    log('Found exercise content with ' + blankCount + ' blanks');
+
+                    // Test the parsing function
+                    const exerciseData = parseExerciseFromHTML(htmlContent, filename);
+                    log('Parsed exercise data: ' + JSON.stringify(exerciseData, null, 2));
+                } else {
+                    logError('No exercise content found!');
+                }
+
+            } catch (error) {
+                logError('Error testing single exercise: ' + error.message);
+            }
+        }
+
+        // Test loading all exercises
+        async function testAllExercises() {
+            try {
+                log('Testing all exercises loading...');
+                const exercises = await loadAllExercises();
+                log('Total exercises loaded: ' + exercises.length);
+
+                if (exercises.length > 0) {
+                    log('First exercise: ' + JSON.stringify(exercises[0], null, 2));
+                    log('Sample titles: ' + exercises.slice(0, 5).map(e => e.title).join(', '));
+                } else {
+                    logError('No exercises loaded!');
+                }
+
+            } catch (error) {
+                logError('Error loading all exercises: ' + error.message);
+            }
+        }
+
+        // Run tests
+        testSingleExerciseParsing();
+        setTimeout(() => testAllExercises(), 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "exercise-data-extractor",
+  "version": "1.0.0",
+  "description": "Extract exercise data from legacy HTML files",
+  "main": "extract-exercise-data.js",
+  "scripts": {
+    "extract": "node extract-exercise-data.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "dependencies": {
+    "jsdom": "^23.0.1"
+  },
+  "devDependencies": {},
+  "keywords": ["html", "parser", "exercises", "data-extraction"],
+  "author": "Fill-in-the-Blank Exercises",
+  "license": "MIT"
+}

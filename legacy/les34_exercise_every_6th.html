@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les34 - Fill-in-the-blank Exercise (Version 2)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les34 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 6th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        **Les 34 Cultuur omdat het <input type="text" size="8" class="fill-blank" data-answer="moet" data-original="moet" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />** 
+
+**Vrijdag, zaterdag en zondag is <input type="text" size="8" class="fill-blank" data-answer="er" data-original="er" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in Ede het Weekend van <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Cultuur.** 
+Op vrijdag is er <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Ede de Monumentendag, met een <input type="text" size="10" class="fill-blank" data-answer="fietstocht" data-original="fietstocht" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> langs belangrijke plekken. 
+’s Avonds <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> er Klassiek in het Park: <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> romantisch concert door het Wagenings <input type="text" size="8" class="fill-blank" data-answer="orkest" data-original="Orkest" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. 
+Vanaf 8 uur kunt u <input type="text" size="8" class="fill-blank" data-answer="terecht" data-original="terecht" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voor een drankje aan de <input type="text" size="8" class="fill-blank" data-answer="bar" data-original="bar" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van het theater. Op zaterdag 
+<input type="text" size="12" class="fill-blank" data-answer="_presenteren" data-original="_presenteren" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> culturele instellingen zich aan het <input type="text" size="8" class="fill-blank" data-answer="publiek" data-original="publiek" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: koren, een dansschool,_ 
+_amateurorkesten, <input type="text" size="8" class="fill-blank" data-answer="bands" data-original="bands" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> en toneelverenigingen. Op zondag na <input type="text" size="8" class="fill-blank" data-answer="elven" data-original="elven" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Poëzie in het Park:_ 
+<input type="text" size="9" class="fill-blank" data-answer="_dichters" data-original="_dichters" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dragen voor uit eigen werk, <input type="text" size="8" class="fill-blank" data-answer="sommigen" data-original="sommigen" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op muziek._ 
+Er is <input type="text" size="8" class="fill-blank" data-answer="genoeg" data-original="genoeg" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te genieten op het gebied <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> cultuur. Cultuur omdat het moet! 
+
+- <input type="text" size="8" class="fill-blank" data-answer="kijk" data-original="Kijk" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hier nou! Het Weekend van <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Cultuur: fietsen, sinds wanneer is <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> cultuur? 
+
+- _Ah joh, cultuur is <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="zo" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />’n ruim begrip, daar valt <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> alles onder: tradities, gewoontes,_ 
+<input type="text" size="8" class="fill-blank" data-answer="muziek" data-original="muziek" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, literatuur en sport, dus fietsen <input type="text" size="8" class="fill-blank" data-answer="ook" data-original="ook" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Zeker in ons land. En <input type="text" size="8" class="fill-blank" data-answer="fietsen" data-original="fietsen" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> langs 
+monumenten, dan ben je <input type="text" size="10" class="fill-blank" data-answer="natuurlijk" data-original="natuurlijk" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> helemaál goed bezig. 
+
+- Dus als <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> naar m’n werk fiets <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dat cultuur? Wat ’n onzin! <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="Voor" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> cultuur moet je naar de 
+<input type="text" size="11" class="fill-blank" data-answer="concertzaal" data-original="concertzaal" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, of naar het theater, het <input type="text" size="8" class="fill-blank" data-answer="museum" data-original="museum" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, of de boekwinkel. 
+
+- Dat ben <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet met je eens. Cultuur <input type="text" size="8" class="fill-blank" data-answer="buiten" data-original="buiten" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, dat kan ook! Het lijkt <input type="text" size="8" class="fill-blank" data-answer="mij" data-original="mij" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wel wat, muziek in 
+het <input type="text" size="8" class="fill-blank" data-answer="park" data-original="park" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Of een concert op het <input type="text" size="8" class="fill-blank" data-answer="water" data-original="water" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ook de grote festivals met <input type="text" size="8" class="fill-blank" data-answer="onze" data-original="onze" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wereldberoemde 
+_dj’s zijn meestal <input type="text" size="8" class="fill-blank" data-answer="buiten" data-original="buiten" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />; ze passen immers in geen <input type="text" size="8" class="fill-blank" data-answer="enkele" data-original="enkele" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> concertzaal._ 
+
+- Wereldberoemd in Nederland, <input type="text" size="8" class="fill-blank" data-answer="zul" data-original="zul" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je bedoelen. Nederland is toch <input type="text" size="8" class="fill-blank" data-answer="veel" data-original="veel" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te klein om 
+internationaal een <input type="text" size="8" class="fill-blank" data-answer="rol" data-original="rol" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te spelen op cultureel gebied! 
+
+- <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="Dat" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> had je gedacht. Hoe heet <input type="text" size="8" class="fill-blank" data-answer="die" data-original="die" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dj ook al weer … kom … <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hele wereld kent ’m. Het 
+<input type="text" size="10" class="fill-blank" data-answer="koninklijk" data-original="Koninklijk" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Concertgebouworkest, dat reist de hele <input type="text" size="8" class="fill-blank" data-answer="wereld" data-original="wereld" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> rond. En die violiste die 
+<input type="text" size="8" class="fill-blank" data-answer="overal" data-original="overal" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> optreedt … toe … ik kan niet <input type="text" size="8" class="fill-blank" data-answer="op" data-original="op" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> haar naam komen! Onze dansers <input type="text" size="8" class="fill-blank" data-answer="behoren" data-original="behoren" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tot 
+de wereldtop. Daarom is ’<input type="text" size="8" class="fill-blank" data-answer="t" data-original="t" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zo erg dat de Nederlandse <input type="text" size="8" class="fill-blank" data-answer="overheid" data-original="overheid" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bezuinigt op cultuur. 
+Ik hoorde <input type="text" size="8" class="fill-blank" data-answer="laatst" data-original="laatst" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> iemand zeggen: dansen, laat dat <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="maar" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in Sint Petersburg gebeuren, 
+niet <input type="text" size="8" class="fill-blank" data-answer="ieder" data-original="ieder" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> land hoeft een eigen danscultuur <input type="text" size="8" class="fill-blank" data-answer="te" data-original="te" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hebben. O, daar kan ik <input type="text" size="8" class="fill-blank" data-answer="me" data-original="me" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zo kwaad om 
+maken … de <input type="text" size="9" class="fill-blank" data-answer="wereldtop" data-original="wereldtop" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wegbezuinigen! Barbaars! 
+
+- Goed, goed, goed, <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wereldtop, oké. Maar de Nederlandse <input type="text" size="10" class="fill-blank" data-answer="literatuur" data-original="literatuur" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> komt toch echt 
+de grens <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> over. Pech voor de Nederlandse <input type="text" size="10" class="fill-blank" data-answer="schrijvers" data-original="schrijvers" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, maar hun werk kan buiten 
+<input type="text" size="9" class="fill-blank" data-answer="nederland" data-original="Nederland" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet gelezen worden. 
+
+- Ook al <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> waar! Boeken kan je vertalen, <input type="text" size="8" class="fill-blank" data-answer="wel" data-original="wel" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> eens van gehoord? En dan <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze ook nog 
+vaak als <input type="text" size="8" class="fill-blank" data-answer="e" data-original="e" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />-book te downloaden. Probeer maar! 
+
+- <input type="text" size="11" class="fill-blank" data-answer="alsjeblieft" data-original="Alsjeblieft" data-index="68" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zeg, e-books, daar ben <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="69" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> veel te ouderwets voor. Niks <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="70" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> mij! Een boek van zo’<input type="text" size="8" class="fill-blank" data-answer="n" data-original="n" data-index="71" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> schermpje lezen, dat kan helemaal <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="72" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Als ‘t dan toch moet, <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="73" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> maar een echt boek. 
+
+- Nou, <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="74" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> lijkt me die poëzie in <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="75" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> park echt iets voor jou. <input type="text" size="8" class="fill-blank" data-answer="je" data-original="Je" data-index="76" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hoeft geen letter te lezen, <input type="text" size="8" class="fill-blank" data-answer="want" data-original="want" data-index="77" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> alles wordt voorgelezen. Dat gebeurde <input type="text" size="8" class="fill-blank" data-answer="trouwens" data-original="trouwens" data-index="78" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vroeger op school ook. De <input type="text" size="8" class="fill-blank" data-answer="leraren" data-original="leraren" data-index="79" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> lazen vaak voor. We moesten <input type="text" size="8" class="fill-blank" data-answer="ook" data-original="ook" data-index="80" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wel gedichten uit ons hoofd <input type="text" size="8" class="fill-blank" data-answer="leren" data-original="leren" data-index="81" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Doen ze vast niet meer, <input type="text" size="12" class="fill-blank" data-answer="tegenwoordig" data-original="tegenwoordig" data-index="82" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Je hoeft niks meer te <input type="text" size="8" class="fill-blank" data-answer="leren" data-original="leren" data-index="83" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, als je maar weet waar <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="84" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> alles op kunt zoeken. 
+
+- Alles <input type="text" size="8" class="fill-blank" data-answer="uit" data-original="uit" data-index="85" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je hoofd leren: jij liever <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="86" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik! Maar wat ik nog <input type="text" size="8" class="fill-blank" data-answer="vragen" data-original="vragen" data-index="87" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wou. Een kennis van mij <input type="text" size="8" class="fill-blank" data-answer="gaat" data-original="gaat" data-index="88" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vier dagen lopen, bij Nijmegen <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="89" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de buurt is dat. Ook <input type="text" size="8" class="fill-blank" data-answer="cultuur" data-original="cultuur" data-index="90" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? 
+
+- Absoluut! De Vierdaagse, een traditie <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="91" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> meer dan 100 jaar oud. <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="Zo" data-index="92" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />’n 40.000 mensen wandelen <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="93" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vier dagen 200 kilometer. En <input type="text" size="8" class="fill-blank" data-answer="veel" data-original="veel" data-index="94" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dorpen organiseren hun eigen ‘Avondvierdaagse’, <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="95" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> alle leeftijden is dat, over <input type="text" size="8" class="fill-blank" data-answer="kortere" data-original="kortere" data-index="96" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> afstanden natuurlijk. En ik hoorde <input type="text" size="8" class="fill-blank" data-answer="laatst" data-original="laatst" data-index="97" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> iets over een fietsvierdaagse, maar <input type="text" size="8" class="fill-blank" data-answer="daar" data-original="daar" data-index="98" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> weet ik het fijne niet <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="99" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. 
+
+- ‘Cultuur moet’? ‘Bewegen moet’ kun <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="100" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> beter zeggen! En trouwens: cultuur, <input type="text" size="8" class="fill-blank" data-answer="waarom" data-original="waarom" data-index="101" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> moet dat eigenlijk? 
+
+- Goeie vraag ... <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="maar" data-index="102" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik moet er ’es vandoor, <input type="text" size="8" class="fill-blank" data-answer="naar" data-original="naar" data-index="103" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de barbecue bij mij in <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="104" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> straat. Ik zou voor warme <input type="text" size="8" class="fill-blank" data-answer="hapjes" data-original="hapjes" data-index="105" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zorgen, iemand anders doet de <input type="text" size="8" class="fill-blank" data-answer="sla" data-original="sla" data-index="106" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, en anderen brengen wat fris, <input type="text" size="8" class="fill-blank" data-answer="sapjes" data-original="sapjes" data-index="107" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> of wijn mee. Valt ook <input type="text" size="8" class="fill-blank" data-answer="onder" data-original="onder" data-index="108" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> cultuur! 
+
+- Haha ... nou, sterkte dan <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="maar" data-index="109" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ... eh ... ik bedoel: veel plezier.
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

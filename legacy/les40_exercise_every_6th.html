@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les40 - Fill-in-the-blank Exercise (Version 2)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les40 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 6th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        **Les 40 Standpunt.nl**
+
+Nederland <input type="text" size="8" class="fill-blank" data-answer="kent" data-original="kent" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een radioprogramma waarin luisteraars tijdens <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uitzending op een
+stelling kunnen <input type="text" size="8" class="fill-blank" data-answer="reageren" data-original="reageren" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ze bellen op, komen rechtstreeks <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de uitzending en geven kort
+<input type="text" size="8" class="fill-blank" data-answer="hun" data-original="hun" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> mening. De luisteraars kunnen ook <input type="text" size="8" class="fill-blank" data-answer="stemmen" data-original="stemmen" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voor of tegen de stelling.
+
+**<input type="text" size="8" class="fill-blank" data-answer="eerste" data-original="Eerste" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> discussie: Gaswinning in Groningen**
+Goedemorgen, <input type="text" size="8" class="fill-blank" data-answer="radio" data-original="Radio" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 1, Standpunt.nl. De stelling <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vandaag is: 'Minder gaswinning in
+<input type="text" size="9" class="fill-blank" data-answer="groningen" data-original="Groningen" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is een slecht idee.' Zegt <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het maar!
+
+"Ja ik ben <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de actiegroep 'Schokkend Groningen'. Ik <input type="text" size="8" class="fill-blank" data-answer="ben" data-original="ben" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vóór ... eh nee ... tégen de
+<input type="text" size="8" class="fill-blank" data-answer="stelling" data-original="stelling" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Het gas waar de Nederlandse <input type="text" size="8" class="fill-blank" data-answer="economie" data-original="economie" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op draait komt voor het <input type="text" size="8" class="fill-blank" data-answer="grootste" data-original="grootste" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> deel uit
+de Groningse grond. <input type="text" size="8" class="fill-blank" data-answer="onder" data-original="Onder" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> onze huizen vandaan, zeg maar. <input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dat merken wij! Weet u <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />
+er per jaar tegen de <input type="text" size="8" class="fill-blank" data-answer="100" data-original="100" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aardbevingen plaatsvinden? Waaronder minstens 10 <input type="text" size="8" class="fill-blank" data-answer="zware" data-original="zware" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Wij
+zijn het zat! Wij <input type="text" size="8" class="fill-blank" data-answer="zeggen" data-original="zeggen" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: stop de gaswinning in Groningen! <input type="text" size="8" class="fill-blank" data-answer="helemaal" data-original="Helemaal" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />!"
+
+"Nou, maar ik ben het <input type="text" size="8" class="fill-blank" data-answer="toch" data-original="toch" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet eens hoor met die <input type="text" size="8" class="fill-blank" data-answer="meneer" data-original="meneer" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van die actiegroep. Gaswinning
+is <input type="text" size="12" class="fill-blank" data-answer="noodzakelijk" data-original="noodzakelijk" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voor onze economie. Weet die <input type="text" size="8" class="fill-blank" data-answer="mijnheer" data-original="mijnheer" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wel wat minder gaswinning kost?
+<input type="text" size="8" class="fill-blank" data-answer="per" data-original="Per" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> jaar 700 miljoen euro! Ik <input type="text" size="8" class="fill-blank" data-answer="zeg" data-original="zeg" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: gewoon boren. Die mensen kunnen <input type="text" size="8" class="fill-blank" data-answer="toch" data-original="toch" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> verhuizen?"
+
+"O, ben ik in <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uitzending? Ik woon hier, en <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kan u vertellen: mijn huis <input type="text" size="8" class="fill-blank" data-answer="zit" data-original="zit" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vol scheuren
+door die aardbevingen. <input type="text" size="9" class="fill-blank" data-answer="duidelijk" data-original="Duidelijk" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zichtbaar! Weet u dat ik <input type="text" size="8" class="fill-blank" data-answer="me" data-original="me" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet veilig voel in mijn <input type="text" size="8" class="fill-blank" data-answer="eigen" data-original="eigen" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />
+huis? En het is totaal <input type="text" size="13" class="fill-blank" data-answer="onverkoopbaar" data-original="onverkoopbaar" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ik kán helemaal niet verhuizen!"
+
+**<input type="text" size="8" class="fill-blank" data-answer="tweede" data-original="Tweede" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> discussie: Windenergie**
+Goedemorgen, Standpunt.nl. <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stelling waar u vandaag op <input type="text" size="8" class="fill-blank" data-answer="kunt" data-original="kunt" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> reageren is:
+'Windenergie heeft de <input type="text" size="8" class="fill-blank" data-answer="toekomst" data-original="toekomst" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.' U bent de eerste, gaat <input type="text" size="8" class="fill-blank" data-answer="uw" data-original="uw" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gang!
+
+"Fijn, dank u wel. <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="Ik" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ben het helemaal eens met <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stelling. Het is een goedkope
+<input type="text" size="11" class="fill-blank" data-answer="energiebron" data-original="energiebron" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, die nooit opraakt. En de <input type="text" size="8" class="fill-blank" data-answer="co2" data-original="CO2" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />-uitstoot is veel geringer dan <input type="text" size="8" class="fill-blank" data-answer="bij" data-original="bij" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> fossiele energie.
+Nee, als iets <input type="text" size="8" class="fill-blank" data-answer="duurzaam" data-original="duurzaam" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is, dan is het wel <input type="text" size="11" class="fill-blank" data-answer="windenergie" data-original="windenergie" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />."
+
+"Duurzaam? Duur zult u bedoelen! <input type="text" size="10" class="fill-blank" data-answer="windmolens" data-original="Windmolens" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> draaien niet op wind, mevrouw, <input type="text" size="8" class="fill-blank" data-answer="die" data-original="die" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />
+draaien op subsidie. Dat windpark <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de Noordzee, weet u wel? <input type="text" size="8" class="fill-blank" data-answer="daar" data-original="Daar" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zit 18 miljard
+subsidie op! <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="Dat" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gaan wij merken op onze <input type="text" size="15" class="fill-blank" data-answer="energierekening" data-original="energierekening" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, reken maar. Goedkoop! Laat
+me <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> lachen!"
+
+"Ik denk er net <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="zo" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> over als deze meneer. Ik <input type="text" size="8" class="fill-blank" data-answer="ben" data-original="ben" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van de actiegroep 'Tegenwind'. Wat <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />
+_lelijke dingen, die molens! Pure <input type="text" size="20" class="fill-blank" data-answer="landschapsvervuiling" data-original="landschapsvervuiling" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ze gaan windmolens maken_
+van <input type="text" size="8" class="fill-blank" data-answer="180" data-original="180" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> meter hoog, weet u dat? <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="Dat" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wil je toch niet! Ze <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ook nog slecht voor de
+<input type="text" size="10" class="fill-blank" data-answer="gezondheid" data-original="gezondheid" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. En ze geven lawaaioverlast."
+
+"Daar <input type="text" size="8" class="fill-blank" data-answer="wil" data-original="wil" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik wel even op reageren. <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="Ik" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vind ze best mooi, die <input type="text" size="8" class="fill-blank" data-answer="molens" data-original="molens" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Lekker modern! En ze
+mogen <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dichtbij huizen neergezet worden, daar <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="68" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> allemaal regels voor. Ik geloof <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="69" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />
+er minstens 300 meter tussen <input type="text" size="8" class="fill-blank" data-answer="moet" data-original="moet" data-index="70" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zitten, zoiets. Nou, dan is <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="71" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> lawaai niet harder dan
+dat <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="72" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je koelkast."
+
+"Ik wil nog <input type="text" size="8" class="fill-blank" data-answer="wel" data-original="wel" data-index="73" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> iets kwijt over de capaciteit. <input type="text" size="8" class="fill-blank" data-answer="om" data-original="Om" data-index="74" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in de totale elektriciteitsbehoefte van
+<input type="text" size="8" class="fill-blank" data-answer="ons" data-original="ons" data-index="75" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> land te voorzien moeten we <input type="text" size="8" class="fill-blank" data-answer="60" data-original="60" data-index="76" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.000 van die dingen plaatsen. <input type="text" size="8" class="fill-blank" data-answer="waar" data-original="Waar" data-index="77" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wil je die allemaal
+_neerzetten? <input type="text" size="9" class="fill-blank" data-answer="nederland" data-original="Nederland" data-index="78" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is gewoon te klein!"_
+
+**<input type="text" size="8" class="fill-blank" data-answer="derde" data-original="Derde" data-index="79" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> discussie: Biologische kip**
+Goedemorgen, Standpunt.<input type="text" size="8" class="fill-blank" data-answer="nl" data-original="nl" data-index="80" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. 'Stunten met goedkope kip moet <input type="text" size="8" class="fill-blank" data-answer="stoppen" data-original="stoppen" data-index="81" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />' is de stelling. We
+beginnen <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="82" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de heer Vos van de <input type="text" size="10" class="fill-blank" data-answer="actiegroep" data-original="actiegroep" data-index="83" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Wakker Dier.
+
+"Dank u wel. <input type="text" size="8" class="fill-blank" data-answer="wij" data-original="Wij" data-index="84" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voeren actie tegen goedkope kip <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="85" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de supermarkt. Deze dieren hebben
+<input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="86" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vreselijk leven gehad. Ze zijn <input type="text" size="8" class="fill-blank" data-answer="veel" data-original="veel" data-index="87" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te zwaar, kunnen nauwelijks lopen, <input type="text" size="8" class="fill-blank" data-answer="komen" data-original="komen" data-index="88" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nooit
+buiten. De supermarkt moet <input type="text" size="8" class="fill-blank" data-answer="alleen" data-original="alleen" data-index="89" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> biologische kip verkopen."
+
+"Die meneer <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="90" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die actiegroep, die kakelt als <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="91" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kip zonder kop. Biologische kip, <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="92" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kan
+ik helemaal niet betalen! <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="Ik" data-index="93" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> weet niet hoe dat bij <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="94" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zit, maar mij groeit het <input type="text" size="8" class="fill-blank" data-answer="geld" data-original="geld" data-index="95" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet op de
+rug!"
+
+"Ben <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="96" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aan de beurt? Fijn. Biologische <input type="text" size="8" class="fill-blank" data-answer="kip" data-original="kip" data-index="97" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is heus ook wel eens <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="98" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de aanbieding, hoor.
+Bij mij <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="99" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de supermarkt tenminste. En biologische <input type="text" size="8" class="fill-blank" data-answer="kip" data-original="kip" data-index="100" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zit niet vol met antibiotica, <input type="text" size="8" class="fill-blank" data-answer="zoals" data-original="zoals" data-index="101" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die
+stuntkippen. Bij biologisch voedsel <input type="text" size="8" class="fill-blank" data-answer="mag" data-original="mag" data-index="102" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dat niet, dat wordt precies <input type="text" size="13" class="fill-blank" data-answer="gecontroleerd" data-original="gecontroleerd" data-index="103" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ik eet
+liever gezond, dat <input type="text" size="8" class="fill-blank" data-answer="weet" data-original="weet" data-index="104" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik wel!"
+
+"U bent zeker <input type="text" size="8" class="fill-blank" data-answer="ook" data-original="ook" data-index="105" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van Wakker Dier? Gelooft u <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="106" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zelf, dat van die controle? <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="107" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> biologische
+boer moet ook winst <input type="text" size="8" class="fill-blank" data-answer="maken" data-original="maken" data-index="108" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, meneertje. Van de wind kan <input type="text" size="8" class="fill-blank" data-answer="niemand" data-original="niemand" data-index="109" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> leven. Dus van
+biologische kip <input type="text" size="8" class="fill-blank" data-answer="weet" data-original="weet" data-index="110" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je ook niet wat er <input type="text" size="8" class="fill-blank" data-answer="allemaal" data-original="allemaal" data-index="111" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in zit. En bovendien: die <input type="text" size="8" class="fill-blank" data-answer="goedkope" data-original="goedkope" data-index="112" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kippen
+worden er heus niet <input type="text" size="8" class="fill-blank" data-answer="beter" data-original="beter" data-index="113" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van als wij ze niet <input type="text" size="8" class="fill-blank" data-answer="kopen" data-original="kopen" data-index="114" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />! Dan koopt iemand anders ze <input type="text" size="8" class="fill-blank" data-answer="toch" data-original="toch" data-index="115" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />?"
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

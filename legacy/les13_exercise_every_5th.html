@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les13 - Fill-in-the-blank Exercise (Version 1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les13 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 5th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 13 *Zeg maar <input type="text" size="8" class="fill-blank" data-answer="piet" data-original="Piet" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />*
+
+Waar ben ik mee <input type="text" size="8" class="fill-blank" data-answer="bezig" data-original="bezig" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Dat denk ik wel <input type="text" size="8" class="fill-blank" data-answer="eens" data-original="eens" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> als ik mijn Nederlandse <input type="text" size="8" class="fill-blank" data-answer="les" data-original="les" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aan het voorbereiden ben! <input type="text" size="10" class="fill-blank" data-answer="nederlands" data-original="Nederlands" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: vijftig kilometer verderop heb <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> er niets meer aan. <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="Dat" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> moet je niet zeggen. <input type="text" size="8" class="fill-blank" data-answer="vijf" data-original="Vijf" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> miljoen (5.000.000) <input type="text" size="8" class="fill-blank" data-answer="belgen" data-original="Belgen" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> spreken het. In het <input type="text" size="11" class="fill-blank" data-answer="noordwesten" data-original="noordwesten" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van Frankrijk spreken zo'<input type="text" size="8" class="fill-blank" data-answer="n" data-original="n" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zestigduizend (60.000) mensen <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Nederlands dialect. Op de <input type="text" size="8" class="fill-blank" data-answer="antillen" data-original="Antillen" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kun je met Nederlands <input type="text" size="8" class="fill-blank" data-answer="terecht" data-original="terecht" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, die behoorden namelijk tot <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Koninkrijk. En hoewel Suriname <input type="text" size="8" class="fill-blank" data-answer="allang" data-original="allang" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geen kolonie meer is, <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de officiële taal Nederlands. <input type="text" size="8" class="fill-blank" data-answer="ook" data-original="Ook" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Indonesië was vanaf de <input type="text" size="8" class="fill-blank" data-answer="17de" data-original="17de" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> eeuw tot na de <input type="text" size="8" class="fill-blank" data-answer="tweede" data-original="Tweede" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Wereldoorlog een Nederlandse kolonie. <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="Maar" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> daar is het Nederlands <input type="text" size="9" class="fill-blank" data-answer="vervangen" data-original="vervangen" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> door een andere taal.
+<input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in *Zuid-Afrika*? Daar <input type="text" size="8" class="fill-blank" data-answer="spreken" data-original="spreken" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze toch ook een <input type="text" size="8" class="fill-blank" data-answer="variant" data-original="variant" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van het Nederlands?
+Inderdaad. <input type="text" size="8" class="fill-blank" data-answer="het" data-original="Het" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Afrikaans is uit het <input type="text" size="8" class="fill-blank" data-answer="17de" data-original="17de" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />-eeuwse Nederlands voortgekomen. De <input type="text" size="9" class="fill-blank" data-answer="uitspraak" data-original="uitspraak" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is echter heel anders, <input type="text" size="8" class="fill-blank" data-answer="evenals" data-original="evenals" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de grammatica. Niettemin hebben <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> talen veel gemeen. Het <input type="text" size="11" class="fill-blank" data-answer="onderscheid" data-original="onderscheid" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tussen 'u' en 'jij' <input type="text" size="12" class="fill-blank" data-answer="bijvoorbeeld" data-original="bijvoorbeeld" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Jammer! Waarom maken ze <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> toch zo ingewikkeld? Het <input type="text" size="8" class="fill-blank" data-answer="engels" data-original="Engels" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> heeft toch ook maar <input type="text" size="8" class="fill-blank" data-answer="één" data-original="één" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> woord? Ik heb er <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> noodzaak nooit van *ingezien*. <input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> als ik iemand vraag <input type="text" size="8" class="fill-blank" data-answer="wanneer" data-original="wanneer" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je 'u' of 'jij' <input type="text" size="8" class="fill-blank" data-answer="moet" data-original="moet" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gebruiken, weet-ie 't <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Ja, het is lastig, <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kan ik niet ontkennen. <input type="text" size="8" class="fill-blank" data-answer="weet" data-original="Weet" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je wat? We kijken <input type="text" size="8" class="fill-blank" data-answer="even" data-original="even" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op het internet. Tegen <input type="text" size="8" class="fill-blank" data-answer="kinderen" data-original="kinderen" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> en leeftijdgenoten tot ca. <input type="text" size="8" class="fill-blank" data-answer="25" data-original="25" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> jaar kan men altijd '<input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />' en 'jij' gebruiken. 'U' <input type="text" size="8" class="fill-blank" data-answer="zegt" data-original="zegt" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> men tegen onbekenden, ouderen, <input type="text" size="8" class="fill-blank" data-answer="docenten" data-original="docenten" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, de directeur van de <input type="text" size="8" class="fill-blank" data-answer="school" data-original="school" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, personeel in winkels en <input type="text" size="10" class="fill-blank" data-answer="ambtenaren" data-original="ambtenaren" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Maar dat klopt niet! <input type="text" size="8" class="fill-blank" data-answer="onze" data-original="Onze" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> docent zei laatst: "Zeg <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="maar" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Piet!" Moet je docenten <input type="text" size="8" class="fill-blank" data-answer="nou" data-original="nou" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met 'u' aanspreken of <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 'jij'?
+Dat hangt af <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hun gedrag. Is dat <input type="text" size="8" class="fill-blank" data-answer="formeel" data-original="formeel" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, dan kun je het <input type="text" size="8" class="fill-blank" data-answer="beste" data-original="beste" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 'u' zeggen. Daarmee druk <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> respect uit, zeg maar. <input type="text" size="8" class="fill-blank" data-answer="in" data-original="In" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de kerk bijvoorbeeld, wordt <input type="text" size="8" class="fill-blank" data-answer="god" data-original="God" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bij het bidden met '<input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />' aangesproken. 'Jij' kan echt <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Dan toon je niet <input type="text" size="8" class="fill-blank" data-answer="genoeg" data-original="genoeg" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> respect. Begrijp je?
+Nog <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> helemaal. Laatst hoorde ik <input type="text" size="8" class="fill-blank" data-answer="iemand" data-original="iemand" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 'u' zeggen tegen een <input type="text" size="11" class="fill-blank" data-answer="verkoopster" data-original="verkoopster" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die veel jonger was. <input type="text" size="8" class="fill-blank" data-answer="hoe" data-original="Hoe" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> verklaar je dat? Ook <input type="text" size="8" class="fill-blank" data-answer="als" data-original="als" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> teken van respect?
+Tja, <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="68" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is een vraag die <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="69" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet één twee drie <input type="text" size="8" class="fill-blank" data-answer="kan" data-original="kan" data-index="70" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> beantwoorden. Het is om <input type="text" size="8" class="fill-blank" data-answer="afstand" data-original="afstand" data-index="71" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te scheppen, neem ik <input type="text" size="8" class="fill-blank" data-answer="aan" data-original="aan" data-index="72" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Maar ik moet er <input type="text" size="8" class="fill-blank" data-answer="nodig" data-original="nodig" data-index="73" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vandoor. Hoi!
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

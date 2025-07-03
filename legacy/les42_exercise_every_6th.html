@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les42 - Fill-in-the-blank Exercise (Version 2)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les42 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 6th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        **Les 42 De tijd vliegt** 
+
+<input type="text" size="14" class="fill-blank" data-answer="oudejaarsavond" data-original="Oudejaarsavond" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, de laatste avond van het <input type="text" size="8" class="fill-blank" data-answer="jaar" data-original="jaar" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. De kerstboom staat nog in <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kamer, en_ 
+in de wc <input type="text" size="8" class="fill-blank" data-answer="hangen" data-original="hangen" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tientallen nieuwjaarskaarten. Het hele huis <input type="text" size="8" class="fill-blank" data-answer="ruikt" data-original="ruikt" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> naar zoete oliebollen, 
+zelf gebakken <input type="text" size="8" class="fill-blank" data-answer="of" data-original="of" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gekocht op straat. De champagne <input type="text" size="8" class="fill-blank" data-answer="staat" data-original="staat" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> al klaar. Straks, precies om <input type="text" size="8" class="fill-blank" data-answer="12" data-original="12" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uur 
+’s nachts, begint het <input type="text" size="8" class="fill-blank" data-answer="nieuwe" data-original="nieuwe" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> jaar. Iedereen gaat de straat <input type="text" size="8" class="fill-blank" data-answer="op" data-original="op" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> om vuurwerk af te steken. 
+<input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> om buren en vrienden gelukkig <input type="text" size="9" class="fill-blank" data-answer="nieuwjaar" data-original="nieuwjaar" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te wensen. 
+
+Maar eerst is <input type="text" size="8" class="fill-blank" data-answer="er" data-original="er" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nog een lange avond. Gezinnen <input type="text" size="8" class="fill-blank" data-answer="doen" data-original="doen" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> spelletjes, de kinderen mogen 
+_opblijven <input type="text" size="8" class="fill-blank" data-answer="met" data-original="met" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de volwassenen. Op tv zijn <input type="text" size="8" class="fill-blank" data-answer="er" data-original="er" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> speciale programma’s, vaak met <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> overzicht_ 
+van het afgelopen jaar. <input type="text" size="8" class="fill-blank" data-answer="wat" data-original="Wat" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> waren de hoogtepunten en wat <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dieptepunten? Wie waren er 
+in <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nieuws? Wat maakte de tongen <input type="text" size="8" class="fill-blank" data-answer="los" data-original="los" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? 
+
+Veel mensen kijken ook op <input type="text" size="8" class="fill-blank" data-answer="hun" data-original="hun" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> eigen leven terug. De tijd <input type="text" size="8" class="fill-blank" data-answer="vliegt" data-original="vliegt" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />! Ze halen herinneringen 
+op aan <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> afgelopen jaar, hetzij goede, hetzij <input type="text" size="8" class="fill-blank" data-answer="slechte" data-original="slechte" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ze vertellen elkaar hun goede 
+<input type="text" size="11" class="fill-blank" data-answer="_voornemens" data-original="_voornemens" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Nog één sigaret opsteken en <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stoppen. Italiaans leren, meer bewegen.<input type="text" size="8" class="fill-blank" data-answer="_" data-original="_" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 
+_Zich gedragen in het verkeer, <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tuin doen. Wat ervan terecht <input type="text" size="8" class="fill-blank" data-answer="komt" data-original="komt" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Dat zien we volgend_ 
+jaar <input type="text" size="8" class="fill-blank" data-answer="wel" data-original="wel" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />! 
+
+Het is ook de laatste <input type="text" size="8" class="fill-blank" data-answer="les" data-original="les" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van deze cursus. Een mooie <input type="text" size="10" class="fill-blank" data-answer="aanleiding" data-original="aanleiding" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> om terug te kijken. 
+Weet <input type="text" size="8" class="fill-blank" data-answer="je" data-original="je" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nog wat je aan het <input type="text" size="8" class="fill-blank" data-answer="begin" data-original="begin" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van de cursus wilde leren? <input type="text" size="8" class="fill-blank" data-answer="beter" data-original="Beter" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Nederlands verstaan, 
+spreken of schrijven? <input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hoe is het er nu <input type="text" size="8" class="fill-blank" data-answer="mee" data-original="mee" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />? Waar heb je je vooral <input type="text" size="8" class="fill-blank" data-answer="mee" data-original="mee" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> beziggehouden? 
+Wat was het leukste <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je over Nederland geleerd hebt? <input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het nuttigste? Heb je 
+_commentaar <input type="text" size="8" class="fill-blank" data-answer="op" data-original="op" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de manier van lesgeven? Bood <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> boek voldoende stof tot discussie?<input type="text" size="8" class="fill-blank" data-answer="_" data-original="_" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 
+Zijn er onderwerpen die je <input type="text" size="8" class="fill-blank" data-answer="gemist" data-original="gemist" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hebt in het materiaal? Zo <input type="text" size="8" class="fill-blank" data-answer="ja" data-original="ja" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, waarover had je nog willen 
+<input type="text" size="8" class="fill-blank" data-answer="praten" data-original="praten" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in de les? 
+
+En dan <input type="text" size="10" class="fill-blank" data-answer="natuurlijk" data-original="natuurlijk" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het belangrijkste: spreek je nu <input type="text" size="8" class="fill-blank" data-answer="vloeiend" data-original="vloeiend" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Nederlands? Je zucht. Nog 
+niet? <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="Dat" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zou in deze fase natuurlijk <input type="text" size="8" class="fill-blank" data-answer="te" data-original="te" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> veel gevraagd zijn. Maar je <input type="text" size="8" class="fill-blank" data-answer="bent" data-original="bent" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wel een aardig eind 
+op <input type="text" size="8" class="fill-blank" data-answer="weg" data-original="weg" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. De grondslag is gelegd. Je <input type="text" size="8" class="fill-blank" data-answer="wilt" data-original="wilt" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het nog beter leren? Oefenen, <input type="text" size="8" class="fill-blank" data-answer="oefenen" data-original="oefenen" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, je ontkomt 
+er niet aan! <input type="text" size="8" class="fill-blank" data-answer="een" data-original="Een" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> goed voornemen voor de komende <input type="text" size="8" class="fill-blank" data-answer="tijd" data-original="tijd" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />?
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les20 - Fill-in-the-blank Exercise (Version 1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les20 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 5th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 20 **Bustocht door <input type="text" size="8" class="fill-blank" data-answer="den" data-original="Den" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Haag**
+
+Goedemiddag. Ik zal <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tijdens deze bustocht wat <input type="text" size="8" class="fill-blank" data-answer="uitleg" data-original="uitleg" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geven over de stad. <input type="text" size="8" class="fill-blank" data-answer="in" data-original="In" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tegenstelling tot veel Zuid-<input type="text" size="9" class="fill-blank" data-answer="hollandse" data-original="Hollandse" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> steden is Den Haag <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ontstaan als handelsstad. Vroeger <input type="text" size="8" class="fill-blank" data-answer="lag" data-original="lag" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hier een groot bos, <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het eigendom was van <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> graaf. Vandaar die langere <input type="text" size="8" class="fill-blank" data-answer="naam" data-original="naam" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die Den Haag ook <input type="text" size="8" class="fill-blank" data-answer="heeft" data-original="heeft" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: 's-Gravenhage. Wij gaan <input type="text" size="8" class="fill-blank" data-answer="nu" data-original="nu" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> linksaf, richting het oude <input type="text" size="8" class="fill-blank" data-answer="centrum" data-original="centrum" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.
+Hier links ziet u <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> mooiste laan van Den <input type="text" size="8" class="fill-blank" data-answer="haag" data-original="Haag" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Dat vind ik tenminste: <input type="text" size="8" class="fill-blank" data-answer="breed" data-original="breed" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, oude bomen, deftige huizen, <input type="text" size="8" class="fill-blank" data-answer="typisch" data-original="typisch" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Haags. Recht vooruit heeft <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het Koninklijk Paleis. Den <input type="text" size="8" class="fill-blank" data-answer="haag" data-original="Haag" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> is de residentie, de <input type="text" size="8" class="fill-blank" data-answer="koning" data-original="koning" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> heeft er zijn paleis. <input type="text" size="8" class="fill-blank" data-answer="er" data-original="Er" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> staan veel ambassades en <input type="text" size="17" class="fill-blank" data-answer="regeringsgebouwen" data-original="regeringsgebouwen" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in deze buurt. En <input type="text" size="8" class="fill-blank" data-answer="hier" data-original="hier" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> links hebben we het <input type="text" size="9" class="fill-blank" data-answer="binnenhof" data-original="Binnenhof" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ziet u dat bakstenen <input type="text" size="8" class="fill-blank" data-answer="gebouw" data-original="gebouw" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met die ronde vensters? <input type="text" size="8" class="fill-blank" data-answer="bijna" data-original="Bijna" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> achthonderd (800) jaar staat <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hier al. De eigenaar <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het bos, die graaf <input type="text" size="8" class="fill-blank" data-answer="waar" data-original="waar" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ik het net over <input type="text" size="8" class="fill-blank" data-answer="had" data-original="had" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, heeft het laten bouwen. <input type="text" size="8" class="fill-blank" data-answer="hij" data-original="Hij" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wilde een **kasteel** in <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bos hebben. Thans heeft <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> parlement er zitting. Het <input type="text" size="8" class="fill-blank" data-answer="plein" data-original="plein" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kent u wel van <input type="text" size="8" class="fill-blank" data-answer="allerlei" data-original="allerlei" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> demonstraties. En als de <input type="text" size="8" class="fill-blank" data-answer="vakbond" data-original="vakbond" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een staking organiseert, eindigt <input type="text" size="8" class="fill-blank" data-answer="die" data-original="die" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vaak ook hier.
+Is <input type="text" size="8" class="fill-blank" data-answer="dat" data-original="dat" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> **torentje** u al opgevallen? <input type="text" size="8" class="fill-blank" data-answer="daar" data-original="Daar" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> heeft de minister-president <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> werkkamer. We rijden nu <input type="text" size="8" class="fill-blank" data-answer="langs" data-original="langs" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het nieuwe stadhuis. Niet <input type="text" size="8" class="fill-blank" data-answer="alle" data-original="alle" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Hagenaars kunnen dit ontwerp <input type="text" size="9" class="fill-blank" data-answer="waarderen" data-original="waarderen" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Verderop is de Schilderswijk. <input type="text" size="8" class="fill-blank" data-answer="een" data-original="Een" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> buurt met grote sociale <input type="text" size="15" class="fill-blank" data-answer="tegenstellingen" data-original="tegenstellingen" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, maar ook met het <input type="text" size="8" class="fill-blank" data-answer="fraaie" data-original="fraaie" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> station Hollands Spoor, een <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de oudste van Nederland.
+<input type="text" size="8" class="fill-blank" data-answer="wij" data-original="Wij" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> rijden nu naar het <input type="text" size="8" class="fill-blank" data-answer="westen" data-original="westen" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Vóór u uit ziet <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het **Vredespaleis**. In de <input type="text" size="8" class="fill-blank" data-answer="vele" data-original="vele" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zalen van dit paleis <input type="text" size="8" class="fill-blank" data-answer="houdt" data-original="houdt" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het Internationaal Gerechtshof zitting. <input type="text" size="8" class="fill-blank" data-answer="als" data-original="Als" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> landen een conflict hebben, <input type="text" size="8" class="fill-blank" data-answer="doen" data-original="doen" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> speciale rechters via deze <input type="text" size="9" class="fill-blank" data-answer="rechtbank" data-original="rechtbank" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uitspraak. Den Haag: de <input type="text" size="10" class="fill-blank" data-answer="juridische" data-original="juridische" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hoofdstad van de wereld!
+
+<input type="text" size="8" class="fill-blank" data-answer="dan" data-original="Dan" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> komen we nu aan <input type="text" size="8" class="fill-blank" data-answer="bij" data-original="bij" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Scheveningen, de drukste badplaats <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Nederland. Als de zon <input type="text" size="8" class="fill-blank" data-answer="schijnt" data-original="schijnt" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, tenminste, en de zee <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te wild is. U <input type="text" size="8" class="fill-blank" data-answer="kunt" data-original="kunt" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hier een frisse neus <input type="text" size="8" class="fill-blank" data-answer="halen" data-original="halen" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op de pier of <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> visje eten op de <input type="text" size="9" class="fill-blank" data-answer="boulevard" data-original="boulevard" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Nog een laatste mededeling: <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="ik" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> verwacht u over drie <input type="text" size="8" class="fill-blank" data-answer="kwartier" data-original="kwartier" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> weer hier, dan keren <input type="text" size="8" class="fill-blank" data-answer="we" data-original="we" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> via de vissershaven terug <input type="text" size="8" class="fill-blank" data-answer="naar" data-original="naar" data-index="68" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ons vertrekpunt. Tot zo!
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

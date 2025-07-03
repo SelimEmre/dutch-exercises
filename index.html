@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill-in-the-Blank Exercises - Dutch Language Learning</title>
+    <meta name="description" content="Interactive Dutch language learning exercises with fill-in-the-blank activities">
+    <meta name="keywords" content="Dutch, language learning, exercises, fill-in-the-blank, Nederlands">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fill-in-the-Blank Exercises">
+    <meta property="og:description" content="Interactive Dutch language learning exercises">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233b82f6'/><text x='16' y='22' font-family='Arial,sans-serif' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>F</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="header-title">Fill-in-the-Blank Exercises</h1>
+                <p class="header-subtitle">Interactive Dutch Language Learning</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Search and Filter Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <label for="searchInput" class="sr-only">Search exercises</label>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search exercises by title or content..."
+                            class="search-input"
+                            aria-label="Search exercises by title or content"
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <button
+                            class="search-btn"
+                            onclick="performSearch()"
+                            aria-label="Search exercises"
+                            type="button"
+                        >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="filter-container">
+                        <label for="sortBy" class="sr-only">Sort exercises</label>
+                        <select
+                            id="sortBy"
+                            class="filter-select"
+                            onchange="applySorting()"
+                            aria-label="Sort exercises by different criteria"
+                        >
+                            <option value="lesson">Sort by Lesson</option>
+                            <option value="title" selected>Sort by Title</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercise Grid -->
+            <section class="exercises-section" aria-labelledby="exercises-heading">
+                <div class="exercises-header">
+                    <h2 id="exercises-heading">Available Exercises</h2>
+                    <span id="exerciseCount" class="exercise-count" aria-live="polite">Loading exercises...</span>
+                </div>
+
+                <div
+                    id="exerciseGrid"
+                    class="exercise-grid"
+                    role="grid"
+                    aria-label="Exercise cards"
+                    aria-busy="true"
+                >
+                    <!-- Exercise cards will be dynamically loaded here -->
+                    <div class="loading" role="status" aria-label="Loading exercises">
+                        <div class="loading-spinner" aria-hidden="true"></div>
+                        <p>Loading exercises...</p>
+                    </div>
+                </div>
+
+                <!-- Debug info -->
+                <div id="debugInfo" style="margin-top: 20px; padding: 10px; background: #f0f0f0; border-radius: 5px; font-family: monospace; font-size: 12px;">
+                    <strong>Debug Info:</strong><br>
+                    <div id="debugLog">Initializing...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Fill-in-the-Blank Exercises. Built for GitHub Pages.</p>
+            <p>
+                <a href="https://github.com/your-username/fill-in-the-blank-exercises" target="_blank" rel="noopener">
+                    View on GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Catch and display JavaScript errors
+        window.addEventListener('error', function(e) {
+            const errorDiv = document.createElement('div');
+            errorDiv.style.cssText = 'position: fixed; top: 10px; right: 10px; background: red; color: white; padding: 10px; z-index: 9999; max-width: 400px;';
+            errorDiv.innerHTML = '<strong>JavaScript Error:</strong><br>' + e.message + '<br>File: ' + e.filename + '<br>Line: ' + e.lineno;
+            document.body.appendChild(errorDiv);
+        });
+    </script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

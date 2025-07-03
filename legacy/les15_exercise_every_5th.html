@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les15 - Fill-in-the-blank Exercise (Version 1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les15 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 5th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 15 *Red de <input type="text" size="11" class="fill-blank" data-answer="voetbalclub" data-original="voetbalclub" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />!*
+
+Professionele voetbalclubs kunnen lelijk <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de problemen komen. Ze <input type="text" size="8" class="fill-blank" data-answer="maken" data-original="maken" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> schulden met topsalarissen voor <input type="text" size="8" class="fill-blank" data-answer="spelers" data-original="spelers" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, trainers en met hun <input type="text" size="8" class="fill-blank" data-answer="luxe" data-original="luxe" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stadions. En als de <input type="text" size="10" class="fill-blank" data-answer="prestaties" data-original="prestaties" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ook nog onder de <input type="text" size="8" class="fill-blank" data-answer="maat" data-original="maat" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> blijven, doen ze een <input type="text" size="8" class="fill-blank" data-answer="beroep" data-original="beroep" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op de gemeente. Red <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voetbalclub! Moet de gemeente <input type="text" size="8" class="fill-blank" data-answer="erop" data-original="erop" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ingaan?
+
+*Argumenten voor*
+1.⁠ ⁠<input type="text" size="10" class="fill-blank" data-answer="supporters" data-original="Supporters" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> beleven plezier aan voetbal. <input type="text" size="8" class="fill-blank" data-answer="zij" data-original="Zij" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vormen als het ware <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> grote familie, met het <input type="text" size="8" class="fill-blank" data-answer="stadion" data-original="stadion" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> als vaste ontmoetingsplaats.
+2.⁠ ⁠<input type="text" size="8" class="fill-blank" data-answer="een" data-original="Een" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> elftal dat kampioen wordt, <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de beste reclame die <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stad kan wensen.
+3.⁠ ⁠<input type="text" size="8" class="fill-blank" data-answer="op" data-original="Op" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kaartjes voor een concert <input type="text" size="8" class="fill-blank" data-answer="of" data-original="of" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> opera zit subsidie, waarom <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op kaartjes voor het <input type="text" size="8" class="fill-blank" data-answer="stadion" data-original="stadion" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />?
+4.⁠ ⁠Bedrijven die in <input type="text" size="13" class="fill-blank" data-answer="moeilijkheden" data-original="moeilijkheden" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> verkeren, worden niet zelden <input type="text" size="8" class="fill-blank" data-answer="overeind" data-original="overeind" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> gehouden met overheidssteun. Waarom <input type="text" size="12" class="fill-blank" data-answer="voetbalclubs" data-original="voetbalclubs" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet?
+5.⁠ ⁠Jongeren zien <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> voetballers een rolmodel. Inspirerend! <input type="text" size="8" class="fill-blank" data-answer="als" data-original="Als" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze zelf gaan voetballen, <input type="text" size="8" class="fill-blank" data-answer="leren" data-original="leren" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze in een team <input type="text" size="8" class="fill-blank" data-answer="te" data-original="te" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> spelen.
+6.⁠ ⁠Voetbal is <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> krachtige stimulans voor de <input type="text" size="8" class="fill-blank" data-answer="economie" data-original="economie" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Met de reclames verdienen <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bedrijven hun investeringen dubbel <input type="text" size="8" class="fill-blank" data-answer="en" data-original="en" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> dwars terug.
+7.⁠ ⁠Voetbal <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kunst! Zie je die <input type="text" size="8" class="fill-blank" data-answer="knappe" data-original="knappe" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> actie met de bal? <input type="text" size="8" class="fill-blank" data-answer="wat" data-original="Wat" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een snelheid! Doelpunt!!
+
+*Argumenten <input type="text" size="8" class="fill-blank" data-answer="tegen" data-original="tegen" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />*
+1.⁠ ⁠Ik haat voetbal. <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> opmerkingen van de toeschouwers <input type="text" size="8" class="fill-blank" data-answer="tijdens" data-original="tijdens" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de wedstrijden vind ik <input type="text" size="9" class="fill-blank" data-answer="schokkend" data-original="schokkend" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Ze moeten zich schamen. <input type="text" size="8" class="fill-blank" data-answer="ik" data-original="Ik" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> waag me niet in <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stadion!
+2.⁠ ⁠Supporters komen <input type="text" size="8" class="fill-blank" data-answer="alleen" data-original="alleen" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> maar om te vechten. <input type="text" size="8" class="fill-blank" data-answer="of" data-original="Of" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hun elftal nou de <input type="text" size="11" class="fill-blank" data-answer="overwinning" data-original="overwinning" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> behaalt of niet, ze <input type="text" size="8" class="fill-blank" data-answer="gaan" data-original="gaan" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met elkaar op de <input type="text" size="8" class="fill-blank" data-answer="vuist" data-original="vuist" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Zo trekken ze een <input type="text" size="8" class="fill-blank" data-answer="spoor" data-original="spoor" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van vernieling door de <input type="text" size="8" class="fill-blank" data-answer="stad" data-original="stad" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Het bezorgt de politie <input type="text" size="10" class="fill-blank" data-answer="letterlijk" data-original="letterlijk" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> handen vol werk en <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kost veel geld.
+3.⁠ ⁠<input type="text" size="8" class="fill-blank" data-answer="het" data-original="Het" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geld kan beter besteed <input type="text" size="8" class="fill-blank" data-answer="worden" data-original="worden" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Aan meer openbaar vervoer, <input type="text" size="8" class="fill-blank" data-answer="of" data-original="of" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> aan goedkopere woningen.
+4.⁠ ⁠<input type="text" size="8" class="fill-blank" data-answer="er" data-original="Er" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zijn gemeentes die het <input type="text" size="8" class="fill-blank" data-answer="stadion" data-original="stadion" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van een club kopen <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een vermogen. Later verhuren <input type="text" size="8" class="fill-blank" data-answer="ze" data-original="ze" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het aan diezelfde club <input type="text" size="8" class="fill-blank" data-answer="voor" data-original="voor" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een symbolisch bedrag.
+5.⁠ ⁠<input type="text" size="8" class="fill-blank" data-answer="grote" data-original="Grote" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> clubs halen jonge talenten <input type="text" size="8" class="fill-blank" data-answer="uit" data-original="uit" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ontwikkelingslanden, trainen ze, en <input type="text" size="8" class="fill-blank" data-answer="verkopen" data-original="verkopen" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze met winst. Slavenhandel!
+<input type="text" size="8" class="fill-blank" data-answer="6" data-original="6" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />.⁠ ⁠De problemen van de <input type="text" size="8" class="fill-blank" data-answer="clubs" data-original="clubs" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zijn het gevolg van <input type="text" size="8" class="fill-blank" data-answer="slecht" data-original="slecht" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bestuur. Dat moet niet <input type="text" size="8" class="fill-blank" data-answer="beloond" data-original="beloond" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> worden.
+7.⁠ ⁠Voetbal is <input type="text" size="8" class="fill-blank" data-answer="oorlog" data-original="oorlog" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Het spel wordt steeds <input type="text" size="8" class="fill-blank" data-answer="gemener" data-original="gemener" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Geen wonder dat supporters <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> slechte voorbeeld volgen!
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les22 - Fill-in-the-blank Exercise (Version 3)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les22 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 7th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        **Les 22 De Verenigde Staten van <input type="text" size="8" class="fill-blank" data-answer="europa" data-original="Europa" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />?**
+
+Zal er ooit sprake zijn van <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Verenigde Staten van Europa, op gelijke <input type="text" size="8" class="fill-blank" data-answer="voet" data-original="voet" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> met de Verenigde Staten van Amerika? <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geschiedenis van de VS verschilt wezenlijk <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die van de Europese Unie. De <input type="text" size="8" class="fill-blank" data-answer="vs" data-original="VS" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ontstonden toen 13 Britse koloniën zich <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 1776 onafhankelijk verklaarden. Zij vormden betrekkelijk <input type="text" size="8" class="fill-blank" data-answer="snel" data-original="snel" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een politieke eenheid. De EU ontstond <input type="text" size="8" class="fill-blank" data-answer="pas" data-original="pas" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> na de Tweede Wereldoorlog. Toen gingen <input type="text" size="8" class="fill-blank" data-answer="zes" data-original="zes" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Europese landen economisch samenwerken, in de <input type="text" size="8" class="fill-blank" data-answer="hoop" data-original="hoop" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> nieuwe oorlogen te voorkomen. Maar het <input type="text" size="8" class="fill-blank" data-answer="bleven" data-original="bleven" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> onafhankelijke staten.
+
+Binnen de Unie zijn <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> grenzen open. Er is vrij verkeer <input type="text" size="8" class="fill-blank" data-answer="van" data-original="van" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> personen en goederen. Subsidies geven de <input type="text" size="8" class="fill-blank" data-answer="boeren" data-original="boeren" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zekerheid omtrent hun inkomen, en invoerrechten <input type="text" size="10" class="fill-blank" data-answer="beschermen" data-original="beschermen" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de lidstaten tegen concurrentie van buiten.
+
+<input type="text" size="8" class="fill-blank" data-answer="voor" data-original="Voor" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> landen buiten de EU is het <input type="text" size="8" class="fill-blank" data-answer="vaak" data-original="vaak" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> buitengewoon moeilijk om producten naar de <input type="text" size="8" class="fill-blank" data-answer="eu" data-original="EU" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te exporteren. Tegenstanders veroordelen dit en <input type="text" size="8" class="fill-blank" data-answer="spreken" data-original="spreken" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kritisch over ‘Fort Europa’.
+“Het is <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> strijd met internationale overeenkomsten om landen <input type="text" size="8" class="fill-blank" data-answer="uit" data-original="uit" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te sluiten van de Europese markt! <input type="text" size="8" class="fill-blank" data-answer="breek" data-original="Breek" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die tariefmuren toch af!”
+“Maar dan <input type="text" size="8" class="fill-blank" data-answer="nemen" data-original="nemen" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> die landen met hun goedkope producten <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> markt over! Als het zover is <input type="text" size="8" class="fill-blank" data-answer="praat" data-original="praat" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> je wel anders!”
+“Nee hoor, ik <input type="text" size="8" class="fill-blank" data-answer="zal" data-original="zal" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de vrije handel altijd verdedigen. Als <input type="text" size="8" class="fill-blank" data-answer="hun" data-original="hun" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> producten nou beter zijn? Laat Europa <input type="text" size="8" class="fill-blank" data-answer="zich" data-original="zich" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> maar bezighouden met industrieën die meer <input type="text" size="14" class="fill-blank" data-answer="technologische" data-original="technologische" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> kennis vereisen.”
+
+*Wat betreft* bestuur en <input type="text" size="8" class="fill-blank" data-answer="beleid" data-original="beleid" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> naderen de EU-landen elkaar steeds <input type="text" size="8" class="fill-blank" data-answer="meer" data-original="meer" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Tal van regels en wetten zijn <input type="text" size="9" class="fill-blank" data-answer="afkomstig" data-original="afkomstig" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uit Brussel. *Voorts* is er een <input type="text" size="8" class="fill-blank" data-answer="europese" data-original="Europese" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> munt die concurreert met de dollar. <input type="text" size="8" class="fill-blank" data-answer="en" data-original="En" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> er is een Europese grondwet.
+
+Politiek <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de EU tot op heden geen <input type="text" size="8" class="fill-blank" data-answer="eenheid" data-original="eenheid" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Internationaal varen de lidstaten hun eigen <input type="text" size="8" class="fill-blank" data-answer="koers" data-original="koers" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Er is een Europese president, maar <input type="text" size="8" class="fill-blank" data-answer="die" data-original="die" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> heeft weinig macht. Hij is de <input type="text" size="10" class="fill-blank" data-answer="voorzitter" data-original="voorzitter" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van de Europese Raad, waarin de <input type="text" size="16" class="fill-blank" data-answer="regeringsleiders" data-original="regeringsleiders" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van de lidstaten zitten. Ook is <input type="text" size="8" class="fill-blank" data-answer="er" data-original="er" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geen sprake van een gezamenlijk militair <input type="text" size="8" class="fill-blank" data-answer="optreden" data-original="optreden" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, laat staan van een Europees leger.
+
+<input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> EU bestaat thans uit 28 landen, <input type="text" size="8" class="fill-blank" data-answer="waardoor" data-original="waardoor" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> er wel 24 officiële talen zijn, <input type="text" size="8" class="fill-blank" data-answer="en" data-original="en" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 5 semi-officiële. Moet de Unie <input type="text" size="8" class="fill-blank" data-answer="al" data-original="al" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> deze talen handhaven, of moet zij <input type="text" size="8" class="fill-blank" data-answer="voortaan" data-original="voortaan" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een kleiner aantal ‘werktalen’ hanteren? Dat <input type="text" size="8" class="fill-blank" data-answer="scheelt" data-original="scheelt" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vanzelfsprekend enorm in de kosten! Maar <input type="text" size="8" class="fill-blank" data-answer="welke" data-original="welke" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> talen zouden dat dan moeten zijn?!
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

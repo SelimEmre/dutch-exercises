@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>les16 - Fill-in-the-blank Exercise (Version 1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .exercise-content {
+            background-color: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #007cba;
+        }
+        input[type="text"] {
+            margin: 0 2px;
+            padding: 2px 4px;
+            font-size: inherit;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        input.correct {
+            background-color: #d4edda;
+            border-bottom: 2px solid #28a745 !important;
+        }
+        input.incorrect {
+            background-color: #f8d7da;
+            border-bottom: 2px solid #dc3545 !important;
+        }
+        .instructions {
+            background-color: #e7f3ff;
+            padding: 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #007cba;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #005a87;
+        }
+        .btn:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            display: none;
+        }
+        .feedback.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="../index.html" class="back-button">
+            <svg class="back-button-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            Back to Exercises
+        </a>
+    </div>
+
+
+    <div class="header">
+        <h1>les16 - Fill-in-the-blank Exercise</h1>
+        <div class="version-info">Fill-in-the-blank Exercise</div>
+    </div>
+
+    <div class="instructions">
+        <strong>Instructions:</strong> Fill in the blanks with the appropriate words.
+        This exercise removes every 5th word from the original text.
+        <br><strong>Tip:</strong> Use the "Check Answers" button to see your results!
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="checkAnswers()">Check Answers</button>
+        <button class="btn" onclick="showAnswers()">Show All Answers</button>
+        <button class="btn" onclick="resetExercise()">Reset</button>
+        <div class="score" id="score" style="display: none;"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="exercise-content">
+        Les 16 **Willem van <input type="text" size="8" class="fill-blank" data-answer="oranje" data-original="Oranje" data-index="0" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />**
+
+"Dames en heren, gaat <input type="text" size="8" class="fill-blank" data-answer="u" data-original="u" data-index="1" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> even opzij? Kan iedereen <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="2" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zien?" We zijn in <input type="text" size="8" class="fill-blank" data-answer="museum" data-original="museum" data-index="3" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Het Prinsenhof te Delft. "<input type="text" size="8" class="fill-blank" data-answer="niet" data-original="Niet" data-index="4" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> **duwen alstublieft**!" Het valt <input type="text" size="8" class="fill-blank" data-answer="niet" data-original="niet" data-index="5" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> mee, met z'n <input type="text" size="8" class="fill-blank" data-answer="allen" data-original="allen" data-index="6" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> op de nauwe trap. <input type="text" size="8" class="fill-blank" data-answer="maar" data-original="Maar" data-index="7" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> uiteindelijk zien we de <input type="text" size="8" class="fill-blank" data-answer="gaten" data-original="gaten" data-index="8" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in de muur. Hier <input type="text" size="8" class="fill-blank" data-answer="werd" data-original="werd" data-index="9" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Willem van Oranje doodgeschoten. <input type="text" size="8" class="fill-blank" data-answer="de" data-original="De" data-index="10" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 'Vader des Vaderlands' noemden <input type="text" size="8" class="fill-blank" data-answer="ze" data-original="ze" data-index="11" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> hem. Wie was hij, <input type="text" size="8" class="fill-blank" data-answer="en" data-original="en" data-index="12" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> waarom werd hij vermoord? <input type="text" size="8" class="fill-blank" data-answer="een" data-original="Een" data-index="13" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> stukje geschiedenis.
+
+Omstreeks 1500 <input type="text" size="8" class="fill-blank" data-answer="liggen" data-original="liggen" data-index="14" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> in West-Europa de '<input type="text" size="8" class="fill-blank" data-answer="lage" data-original="Lage" data-index="15" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Landen', een verzameling onafhankelijke <input type="text" size="10" class="fill-blank" data-answer="provincies" data-original="provincies" data-index="16" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. De koning van Spanje <input type="text" size="8" class="fill-blank" data-answer="krijgt" data-original="krijgt" data-index="17" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> ze één voor één <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="18" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> handen, tot heel West-<input type="text" size="8" class="fill-blank" data-answer="europa" data-original="Europa" data-index="19" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> tot zijn rijk behoort. <input type="text" size="8" class="fill-blank" data-answer="omdat" data-original="Omdat" data-index="20" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> zo'n groot rijk <input type="text" size="8" class="fill-blank" data-answer="moeilijk" data-original="moeilijk" data-index="21" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> te regeren is, **laat <input type="text" size="8" class="fill-blank" data-answer="hij" data-original="hij" data-index="22" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het plaatselijke bestuur over <input type="text" size="8" class="fill-blank" data-answer="aan" data-original="aan" data-index="23" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> anderen**. Leden van belangrijke <input type="text" size="8" class="fill-blank" data-answer="families" data-original="families" data-index="24" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> regeren in zijn plaats. <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="Zo" data-index="25" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> verschijnt Willem van Oranje <input type="text" size="8" class="fill-blank" data-answer="op" data-original="op" data-index="26" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> het toneel.
+Geboren in <input type="text" size="8" class="fill-blank" data-answer="nassau" data-original="Nassau" data-index="27" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, Duitsland, erft hij van <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="28" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Franse neef de titel '<input type="text" size="8" class="fill-blank" data-answer="prins" data-original="prins" data-index="29" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> van Oranje'. Hij wordt <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="30" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Brussel opgevoed om de <input type="text" size="8" class="fill-blank" data-answer="spaanse" data-original="Spaanse" data-index="31" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> koning te vertegenwoordigen in <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="32" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Lage Landen. Of beter <input type="text" size="8" class="fill-blank" data-answer="gezegd" data-original="gezegd" data-index="33" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />: de 'Lastige Landen'! Ze <input type="text" size="8" class="fill-blank" data-answer="zijn" data-original="zijn" data-index="34" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> altijd in verzet tegen <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="35" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Spaanse **gezag**. Dat legt <input type="text" size="8" class="fill-blank" data-answer="allerlei" data-original="allerlei" data-index="36" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> belastingen op. En ook <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="37" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> katholieke godsdienst, terwijl in <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="38" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> noorden het protestantisme juist <input type="text" size="10" class="fill-blank" data-answer="belangrijk" data-original="belangrijk" data-index="39" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> wordt. Ook Willem wordt <input type="text" size="10" class="fill-blank" data-answer="protestant" data-original="protestant" data-index="40" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Onder zijn leiding komen <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="41" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Lage Landen in opstand <input type="text" size="8" class="fill-blank" data-answer="tegen" data-original="tegen" data-index="42" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Spanje. Tachtig jaar duurt <input type="text" size="8" class="fill-blank" data-answer="de" data-original="de" data-index="43" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> opstand. Deze 'Tachtigjarige oorlog' <input type="text" size="8" class="fill-blank" data-answer="is" data-original="is" data-index="44" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> een periode waarin men <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="45" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> vaak 'Spaans benauwd' heeft: <input type="text" size="8" class="fill-blank" data-answer="erg" data-original="erg" data-index="46" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> bang is.
+
+Een voor <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="47" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> sluiten de provincies zich <input type="text" size="8" class="fill-blank" data-answer="aan" data-original="aan" data-index="48" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />, en in 1581 vormen <input type="text" size="8" class="fill-blank" data-answer="zij" data-original="zij" data-index="49" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de Republiek der Verenigde <input type="text" size="11" class="fill-blank" data-answer="nederlanden" data-original="Nederlanden" data-index="50" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. De koning kan dit <input type="text" size="10" class="fill-blank" data-answer="natuurlijk" data-original="natuurlijk" data-index="51" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> niet accepteren. Wie Oranje <input type="text" size="8" class="fill-blank" data-answer="doodt" data-original="doodt" data-index="52" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> krijgt een **beloning**! En <input type="text" size="8" class="fill-blank" data-answer="zo" data-original="zo" data-index="53" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> geschiedt het: hij wordt <input type="text" size="8" class="fill-blank" data-answer="vermoord" data-original="vermoord" data-index="54" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. Maar de onafhankelijkheid is <input type="text" size="8" class="fill-blank" data-answer="dan" data-original="dan" data-index="55" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> reeds een feit, en <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="56" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 1648 wordt Nederland ook <input type="text" size="9" class="fill-blank" data-answer="officieel" data-original="officieel" data-index="57" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> door de Europese landen <input type="text" size="8" class="fill-blank" data-answer="als" data-original="als" data-index="58" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> republiek erkend.
+
+Meer dan <input type="text" size="13" class="fill-blank" data-answer="honderdveftig" data-original="honderdveftig" data-index="59" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> (150) jaar blijft Nederland <input type="text" size="8" class="fill-blank" data-answer="een" data-original="een" data-index="60" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> republiek. Al die tijd <input type="text" size="8" class="fill-blank" data-answer="behouden" data-original="behouden" data-index="61" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> de Oranjes invloed. Als <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="62" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> land een koninkrijk wordt, <input type="text" size="8" class="fill-blank" data-answer="in" data-original="in" data-index="63" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 1815, wordt een Oranje <input type="text" size="8" class="fill-blank" data-answer="koning" data-original="koning" data-index="64" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. En zo is het <input type="text" size="8" class="fill-blank" data-answer="nog" data-original="nog" data-index="65" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />. We bevinden ons in <input type="text" size="8" class="fill-blank" data-answer="het" data-original="het" data-index="66" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> Koninkrijk der Nederlanden, met <input type="text" size="8" class="fill-blank" data-answer="sinds" data-original="sinds" data-index="67" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" /> 2013 aan het hoofd: <input type="text" size="8" class="fill-blank" data-answer="willem" data-original="Willem" data-index="68" style="border: none; border-bottom: 1px solid #000; background: transparent;" placeholder="____" />-Alexander van Oranje-Nassau.
+    </div>
+    
+    <script>
+        // Auto-resize input fields based on content
+        document.addEventListener('input', function(e) {
+            if (e.target.type === 'text') {
+                const minSize = 8;
+                const newSize = Math.max(e.target.value.length + 2, minSize);
+                e.target.size = newSize;
+
+                // Clear previous validation styling when user types
+                e.target.classList.remove('correct', 'incorrect');
+            }
+        });
+
+        function normalizeText(text) {
+            // Remove diacritics, convert to lowercase, remove punctuation
+            return text.toLowerCase()
+                      .normalize('NFD')
+                      .replace(/[\u0300-\u036f]/g, '')
+                      .replace(/[^\w]/g, '');
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = normalizeText(input.value.trim());
+                const correctAnswer = input.getAttribute('data-answer');
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    correct++;
+                } else {
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                }
+            });
+
+            // Show score
+            const scoreElement = document.getElementById('score');
+            const percentage = Math.round((correct / total) * 100);
+            scoreElement.textContent = `Score: ${correct}/${total} (${percentage}%)`;
+            scoreElement.style.display = 'block';
+
+            // Show feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'block';
+
+            if (percentage >= 90) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Excellent work! You got most answers correct!';
+            } else if (percentage >= 70) {
+                feedbackElement.className = 'feedback success';
+                feedbackElement.textContent = 'Good job! Keep practicing to improve further.';
+            } else {
+                feedbackElement.className = 'feedback warning';
+                feedbackElement.textContent = 'Keep practicing! Try using the "Show Answers" button to learn.';
+            }
+        }
+
+        function showAnswers() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                const originalWord = input.getAttribute('data-original');
+                input.value = originalWord;
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+            });
+
+            // Update score to show all correct
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Answers shown: ${inputs.length}/${inputs.length} (100%)`;
+            scoreElement.style.display = 'block';
+
+            // Hide feedback
+            const feedbackElement = document.getElementById('feedback');
+            feedbackElement.style.display = 'none';
+        }
+
+        function resetExercise() {
+            const inputs = document.querySelectorAll('.fill-blank');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.size = Math.max(input.getAttribute('data-original').length, 8);
+            });
+
+            // Hide score and feedback
+            document.getElementById('score').style.display = 'none';
+            document.getElementById('feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
