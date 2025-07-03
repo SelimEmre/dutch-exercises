@@ -3,7 +3,6 @@
  */
 
 console.log('main.js loaded');
-alert('main.js loaded - JavaScript is working!');
 
 // Debug logging function
 function debugLog(message) {
