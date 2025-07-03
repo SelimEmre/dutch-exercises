@@ -2,8 +2,6 @@
  * Main JavaScript file for the fill-in-the-blank exercises application
  */
 
-console.log('main.js loaded');
-
 // Debug logging function
 function debugLog(message) {
     console.log(message);
