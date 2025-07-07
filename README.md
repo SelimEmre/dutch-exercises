@@ -6,8 +6,6 @@ A comprehensive web application for interactive Dutch language learning through 
 
 Visit the live application: [https://SelimEmre.github.io/dutch-exercises/](https://SelimEmre.github.io/dutch-exercises/)
 
-> **Note**: Replace `your-username` with your actual GitHub username after forking this repository.
-
 ## Features
 
 - 🎯 **Interactive Exercises**: Fill-in-the-blank exercises with real-time validation
@@ -55,14 +53,6 @@ npx http-server
 ```
 
 3. Open [http://localhost:8000](http://localhost:8000) in your browser.
-
-### GitHub Pages Deployment
-
-1. Fork this repository
-2. Go to repository Settings → Pages
-3. Select "Deploy from a branch"
-4. Choose "main" branch and "/ (root)" folder
-5. Your site will be available at `https://your-username.github.io/fill-in-the-blank-exercises`
 
 ## Project Structure
 
