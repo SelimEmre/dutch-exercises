@@ -4,7 +4,7 @@ A comprehensive web application for interactive Dutch language learning through 
 
 ## 🌐 Live Demo
 
-Visit the live application: [https://SelimEmre.github.io/fill-in-the-blank-exercises](https://SelimEmre.github.io/fill-in-the-blank-exercises)
+Visit the live application: [https://SelimEmre.github.io/dutch-exercises/](https://SelimEmre.github.io/dutch-exercises/)
 
 > **Note**: Replace `your-username` with your actual GitHub username after forking this repository.
 
